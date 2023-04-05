@@ -9,7 +9,7 @@ namespace System.Runtime.CompilerServices
     //public class ExtensionAttribute : Attribute { }
 }
 
-namespace Util.DataTable
+namespace Util
 {
     public static class DataTableExtension
     {

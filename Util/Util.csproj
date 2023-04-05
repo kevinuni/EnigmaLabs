@@ -130,6 +130,7 @@
     <Compile Include="TextParser\ScanFormatted.cs" />
     <Compile Include="TextParser\TextParser.cs" />
     <Compile Include="TimeManager.cs" />
+    <Compile Include="TypeConverters.cs" />
     <Compile Include="TypeMethods.cs" />
     <Compile Include="Validators\FormatValidator.cs" />
     <Compile Include="ZipManager.cs" />

@@ -3,7 +3,6 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Data;
 using System.Reflection;
-using System.Text;
 
 namespace Util
 {
@@ -14,9 +13,9 @@ namespace Util
         /// </summary>
         /// <param name="list"></param>
         /// <returns></returns>
-        public static System.Data.DataTable ToDataTable(IEnumerable list)
+        public static DataTable ToDataTable(IEnumerable list)
         {
-            System.Data.DataTable dt = new System.Data.DataTable();
+            DataTable dt = new DataTable();
 
             Type elementType = TypeMethods.HeuristicallyDetermineType(list);
 
@@ -25,7 +24,7 @@ namespace Util
             {
                 Type ColType = Nullable.GetUnderlyingType(propInfo.PropertyType) ?? propInfo.PropertyType;
 
-                DataColumn dc = new DataColumn();                
+                DataColumn dc = new DataColumn();
                 dc.ColumnName = propInfo.Name;
                 dc.DataType = ColType;
                 dc.Caption = TypeMethods.GetDescriptionFromPropertyInfo(propInfo);
@@ -46,13 +45,12 @@ namespace Util
                     }
                     dt.Rows.Add(row);
                 }
-
             }
 
             return dt;
         }
 
-        public static List<T> ToList<T>(System.Data.DataTable dt) where T : new()
+        public static List<T> ToList<T>(DataTable dt) where T : new()
         {
             List<T> list = new List<T>();
             foreach (DataRow dr in dt.Rows)
