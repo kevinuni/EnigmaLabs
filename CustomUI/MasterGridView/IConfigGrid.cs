@@ -9,6 +9,6 @@ namespace ControlsUI
 
         void SetGridColumnStyleAfterBinding(DataGridView dataGridView);
 
-        void ConfigColumns(DataGridView grid, Type tipo);
+        void ConfigChildColumns(DataGridView childGrid, Type childType);
     }
 }

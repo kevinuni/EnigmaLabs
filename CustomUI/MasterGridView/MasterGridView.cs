@@ -355,9 +355,9 @@ namespace ControlsUI
                         { 
                             IList listOfDetail = (IList)childField.GetValue(parentObject);
 
-                            string name = TypeMethods.GetDescriptionFromFieldInfo(childField);
+                            string tabTitle = TypeMethods.GetDescriptionFromFieldInfo(childField);
 
-                            detailTabControl.AddChildgrid(listOfDetail, name);
+                            detailTabControl.AddChildgrid(listOfDetail, tabTitle);
                         }
                     }
                 }

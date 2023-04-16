@@ -44,7 +44,7 @@ namespace ControlsUI
             }
         }
 
-        internal void AddChildgrid(IList listOfDetail, string name)
+        internal void AddChildgrid(IList listOfDetail, string tabTile)
         {
             DataGridView childGrid = new DataGridView();
             // poner un contador en el rowheader
@@ -56,7 +56,7 @@ namespace ControlsUI
             childGrid.KeyDown += grid_KeyDown;
 
             Type childType = TypeMethods.HeuristicallyDetermineType(listOfDetail);
-            _configGrid.ConfigColumns(childGrid, childType);
+            _configGrid.ConfigChildColumns(childGrid, childType);
             _configGrid.ApplyTheme(childGrid);
 
             // Agregar la data
@@ -75,7 +75,7 @@ namespace ControlsUI
             else if (childType.IsPrimitive == false)
             {
                 // Child-types should be objects, nor primitive types allowed
-                TabPage tabpage = new TabPage { Text = name };
+                TabPage tabpage = new TabPage { Text = tabTile };
 
                 tabpage.ToolTipText = TypeMethods.GetDescriptionFromType(childType);
                 tabpage.Controls.Add(childGrid);
