@@ -83,5 +83,41 @@ namespace ControlsUI
             //dataGridView.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
             dataGridView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
         }
+
+        public void ApplyTheme(DataGridView dataGridView)
+        {
+            dataGridView.AllowUserToAddRows = true;
+            dataGridView.AllowUserToDeleteRows = true;
+            dataGridView.AllowUserToResizeRows = false;
+            dataGridView.AllowUserToResizeColumns = true;
+            dataGridView.AutoGenerateColumns = false;
+            dataGridView.Dock = DockStyle.Fill;
+            dataGridView.MultiSelect = true;
+            dataGridView.ReadOnly = false;
+            dataGridView.SelectionMode = DataGridViewSelectionMode.CellSelect;
+            dataGridView.ShowCellToolTips = false;
+
+            dataGridView.BackgroundColor = System.Drawing.SystemColors.Window;
+            dataGridView.BorderStyle = System.Windows.Forms.BorderStyle.None;
+
+            // Format columnheader
+            dataGridView.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
+            dataGridView.ColumnHeadersDefaultCellStyle = columnHeaderCellStyle;
+            dataGridView.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            //dataGridView.ColumnHeadersHeight = 32;
+
+            // Format rowheader
+            dataGridView.RowHeadersVisible = true;
+            dataGridView.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
+            dataGridView.AutoResizeRowHeadersWidth(DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders);
+            dataGridView.RowHeadersDefaultCellStyle = rowHeaderCellStyle;
+            dataGridView.TopLeftHeaderCell.Value = "Nro ";
+            dataGridView.TopLeftHeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+
+            dataGridView.DefaultCellStyle = defaultCellStyle;
+            dataGridView.EnableHeadersVisualStyles = false;
+            dataGridView.GridColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            dataGridView.Font = columnHeaderCellStyle.Font;
+        }
     }
 }

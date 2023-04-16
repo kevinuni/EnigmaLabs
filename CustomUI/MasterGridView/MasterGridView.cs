@@ -9,8 +9,21 @@ using Util;
 namespace ControlsUI
 {
     public class MasterGridView : DataGridView
-    {   
-        public IConfigGrid ConfigGrid { get; set; }
+    {
+        private IConfigGrid _configGrid;
+
+        public void SetConfiguration(IConfigGrid configrid) 
+        {
+            _configGrid = configrid;
+
+            DetailTabControl detailTabControl = new DetailTabControl(_configGrid)
+            {
+                Height = this.rowExpandedDivider - this.rowDividerMargin * 2,
+                Visible = false
+            };
+
+            this.detailTabControl = detailTabControl;
+        }        
 
         public List<int> lstCurrentRows = new List<int>();
         public int rowDefaultHeight { get; set; } = 22;
@@ -60,17 +73,20 @@ namespace ControlsUI
             KeyDown += MasterGridView_KeyDown;
 
             Layout += MasterGridView_Layout;
+
+
         }
 
         private void MasterGridView_Layout(object sender, LayoutEventArgs e)
         {
+            // Se invoca al cargar el form, similar a Load()
             BeginInvoke(new Action(() =>
             {
-                ConfigGrid.ApplyTheme(this);
+                _configGrid.ApplyTheme(this);
             }));
 
-            ConfigGrid.SetGridColumnStyleAfterBinding(this);
-            this.SetChild();
+            _configGrid.SetGridColumnStyleAfterBinding(this);
+            this.SetChildLevelUI();
 
             this.Layout -= MasterGridView_Layout;
         }
@@ -114,23 +130,23 @@ namespace ControlsUI
             }
         }
 
-        private void comboOpt2_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode.Equals(Keys.Delete))
-            {
-                ComboBox combo = (ComboBox)this.EditingControl;
-                combo.SelectedIndex = -1;
-            }
-        }
+        //private void comboOpt2_KeyDown(object sender, KeyEventArgs e)
+        //{
+        //    if (e.KeyCode.Equals(Keys.Delete))
+        //    {
+        //        ComboBox combo = (ComboBox)this.EditingControl;
+        //        combo.SelectedIndex = -1;
+        //    }
+        //}
 
-        private void comboOpt1_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode.Equals(Keys.Delete))
-            {
-                ComboBox combo = (ComboBox)this.EditingControl;
-                combo.SelectedIndex = -1;
-            }
-        }
+        //private void comboOpt1_KeyDown(object sender, KeyEventArgs e)
+        //{
+        //    if (e.KeyCode.Equals(Keys.Delete))
+        //    {
+        //        ComboBox combo = (ComboBox)this.EditingControl;
+        //        combo.SelectedIndex = -1;
+        //    }
+        //}
 
         private ToolTip tt = new ToolTip();
 
@@ -151,7 +167,7 @@ namespace ControlsUI
                     return;
                 }
 
-                if (string.IsNullOrWhiteSpace(description))
+                if (string.IsNullOrWhiteSpace(description))         
                 {
                     tt.Hide(this);
                 }
@@ -187,18 +203,16 @@ namespace ControlsUI
         {
             bool hasDetailList = false;
 
-            Type tipo = null;
-
+            Type currentType = null;
+            
             if (DataSource is BindingSource)
             {
-                tipo = ((BindingSource)DataSource).Current.GetType();
+                currentType = ((BindingSource)DataSource).Current.GetType();
             }
 
-            foreach (FieldInfo field in tipo.GetFields())
+            foreach (FieldInfo field in currentType.GetFields())
             {
-                if (field.FieldType.IsGenericType
-                    && field.FieldType.GetGenericTypeDefinition() == typeof(List<>)
-                    )
+                if (IsNonPrimitiveList(field.FieldType))
                 {
                     hasDetailList |= true;
                 }
@@ -207,17 +221,30 @@ namespace ControlsUI
             return hasDetailList;
         }
 
+        string nameofIListType = typeof(IList).Name;
+
+        private bool IsNonPrimitiveList(Type type)
+        {
+            return
+                type.IsGenericType
+                && type.GetGenericArguments()[0].IsPrimitive == false;
+        }
+
         /// <summary>
         /// Es necesario fijar la grilla hija al mismo nivel de jerarquia que el Mastergrid
         /// </summary>
-        public void SetChild()
+        public void SetChildLevelUI()
         {
-            if (this.Parent == null)
+            if (this.Parent != null)
+            {
+                this.Parent.Controls.Add(detailTabControl);
+                detailTabControl.BringToFront();
+            }
+            else 
             {
                 throw new Exception("The control should be in a container.");
             }
-            this.Parent.Controls.Add(detailTabControl);
-            detailTabControl.BringToFront();
+            
         }
 
         private void MasterControl_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
@@ -324,10 +351,8 @@ namespace ControlsUI
                 {
                     foreach (FieldInfo childField in parentType.GetFields())
                     {
-                        if (childField.FieldType.IsGenericType
-                            && childField.FieldType.GetGenericTypeDefinition() == typeof(List<>)
-                            && childField.FieldType.GetGenericTypeDefinition() != typeof(List<double>))
-                        {
+                        if (IsNonPrimitiveList(childField.FieldType)) 
+                        { 
                             IList listOfDetail = (IList)childField.GetValue(parentObject);
 
                             string name = TypeMethods.GetDescriptionFromFieldInfo(childField);

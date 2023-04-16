@@ -55,8 +55,8 @@ namespace ControlsUI
 
             childGrid.KeyDown += grid_KeyDown;
 
-            Type tipo = TypeMethods.HeuristicallyDetermineType(listOfDetail);
-            _configGrid.ConfigColumns(childGrid, tipo);
+            Type childType = TypeMethods.HeuristicallyDetermineType(listOfDetail);
+            _configGrid.ConfigColumns(childGrid, childType);
             _configGrid.ApplyTheme(childGrid);
 
             // Agregar la data
@@ -67,12 +67,17 @@ namespace ControlsUI
 
             //cModule.setGridColumnStyleAfterBinding(childGrid);
 
-            // Existen algunas colecciones del tipo doble que no queremos que se muestren
-            if (TypeMethods.HeuristicallyDetermineType(listOfDetail) != typeof(double))
+            if (childType.IsGenericType)
             {
+                // Child-types can't be lists (not allowed by now)
+                throw new Exception("Child grids with generic types not allowed.");
+            }
+            else if (childType.IsPrimitive == false)
+            {
+                // Child-types should be objects, nor primitive types allowed
                 TabPage tabpage = new TabPage { Text = name };
 
-                tabpage.ToolTipText = TypeMethods.GetDescriptionFromType(tipo);
+                tabpage.ToolTipText = TypeMethods.GetDescriptionFromType(childType);
                 tabpage.Controls.Add(childGrid);
 
                 this.TabPages.Add(tabpage);
@@ -104,16 +109,20 @@ namespace ControlsUI
             {
                 Type tipo = TypeMethods.HeuristicallyDetermineType((IEnumerable)bs.DataSource);
                 var property = tipo.GetProperty(newGrid.Columns[e.ColumnIndex].DataPropertyName);
-                var description = TypeMethods.GetDescriptionFromPropertyInfo(property);
 
-                if (string.IsNullOrWhiteSpace(description))
+                if (property != null) 
                 {
-                    tt.Hide(newGrid);
-                }
-                else
-                {
-                    tt.SetToolTip(newGrid, description);
-                }
+                    var description = TypeMethods.GetDescriptionFromPropertyInfo(property);
+
+                    if (string.IsNullOrWhiteSpace(description))
+                    {
+                        tt.Hide(newGrid);
+                    }
+                    else
+                    {
+                        tt.SetToolTip(newGrid, description);
+                    }
+                }                
             }
             //else
             //{

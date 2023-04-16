@@ -17,26 +17,18 @@ namespace ControlsUIDemo
 
         private void frmMastergridview_Load(object sender, EventArgs e)
         {
-            MasterGridView masterGridView1 = new MasterGridView();
-            masterGridView1.ConfigGrid = configGrid;
+            MasterGridView dgv = new MasterGridView();
+            dgv.SetConfiguration(configGrid);
 
-            DetailTabControl detailTabControl = new DetailTabControl(configGrid)
-            {
-                Height = masterGridView1.rowExpandedDivider - masterGridView1.rowDividerMargin * 2,
-                Visible = false
-            };
+            this.Controls.Add(dgv);
 
-            masterGridView1.detailTabControl = detailTabControl;
-
-            this.Controls.Add(masterGridView1);
-
-            masterGridView1.AutoGenerateColumns = true;
+            dgv.AutoGenerateColumns = true;
 
             BindingSource bs = new BindingSource();
             bs.DataSource = Student.getStudents(); //Person.GetPersons();
 
-            masterGridView1.DataSource = bs;
-            masterGridView1.Dock = DockStyle.Fill;
+            dgv.DataSource = bs;
+            dgv.Dock = DockStyle.Fill;
 
         }
     }
