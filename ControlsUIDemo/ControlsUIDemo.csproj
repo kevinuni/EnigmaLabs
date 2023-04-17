@@ -121,8 +121,6 @@
       <DependentUpon>frmMasterGridView.cs</DependentUpon>
     </Compile>
     <Compile Include="Models\Course.cs" />
-    <Compile Include="Models\Score.cs" />
-    <Compile Include="Models\Person.cs" />
     <Compile Include="Models\Qualifications.cs" />
     <Compile Include="Models\Student.cs" />
     <Compile Include="Program.cs" />

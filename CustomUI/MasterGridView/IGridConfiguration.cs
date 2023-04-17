@@ -3,12 +3,14 @@ using System.Windows.Forms;
 
 namespace ControlsUI
 {
-    public interface IConfigGrid
+    public interface IGridConfiguration
     {
         void ApplyTheme(DataGridView grid);
 
         void SetGridColumnStyleAfterBinding(DataGridView dataGridView);
 
-        void ConfigChildColumns(DataGridView childGrid, Type childType);
+        void ConfigGrid(DataGridView grid);
+
+        void ConfigChildGrid(DataGridView childGrid, Type childType);
     }
 }

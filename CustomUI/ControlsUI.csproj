@@ -99,7 +99,7 @@
     <Compile Include="MasterGridView\DetailTabControl.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="MasterGridView\IConfigGrid.cs" />
+    <Compile Include="MasterGridView\IGridConfiguration.cs" />
     <Compile Include="MasterGridView\MasterGridView.cs">
       <SubType>Component</SubType>
     </Compile>

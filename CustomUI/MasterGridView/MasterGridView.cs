@@ -10,13 +10,15 @@ namespace ControlsUI
 {
     public class MasterGridView : DataGridView
     {
-        private IConfigGrid _configGrid;
+        private IGridConfiguration _gridConfiguration;
 
-        public void SetConfiguration(IConfigGrid configrid) 
+        public void SetConfiguration(IGridConfiguration gridConfiguration) 
         {
-            _configGrid = configrid;
+            _gridConfiguration = gridConfiguration;
 
-            DetailTabControl detailTabControl = new DetailTabControl(_configGrid)
+            _gridConfiguration.ConfigGrid(this);
+
+            DetailTabControl detailTabControl = new DetailTabControl(_gridConfiguration)
             {
                 Height = this.rowExpandedDivider - this.rowDividerMargin * 2,
                 Visible = false
@@ -82,10 +84,10 @@ namespace ControlsUI
             // Se invoca al cargar el form, similar a Load()
             BeginInvoke(new Action(() =>
             {
-                _configGrid.ApplyTheme(this);
+                _gridConfiguration.ApplyTheme(this);
             }));
 
-            _configGrid.SetGridColumnStyleAfterBinding(this);
+            _gridConfiguration.SetGridColumnStyleAfterBinding(this);
             this.SetChildLevelUI();
 
             this.Layout -= MasterGridView_Layout;
@@ -126,7 +128,7 @@ namespace ControlsUI
             else if (e.Control && e.KeyCode.Equals(Keys.Enter))
             {
                 // abrir detalle
-                OpenDetail(this.CurrentRow.Index);
+                ExpandDetail(this.CurrentRow.Index);
             }
         }
 
@@ -221,8 +223,11 @@ namespace ControlsUI
             return hasDetailList;
         }
 
-        string nameofIListType = typeof(IList).Name;
-
+        /// <summary>
+        /// Look if field is a list of non-primitive type
+        /// </summary>
+        /// <param name="field"></param>
+        /// <returns></returns>
         private bool IsNonPrimitiveList(Type type)
         {
             return
@@ -304,7 +309,7 @@ namespace ControlsUI
             if (rect.Contains(e.Location))
             {
                 // si se presiona en el símbolo más se abre el detalle
-                OpenDetail(e.RowIndex);
+                ExpandDetail(e.RowIndex);
             }
             else
             {
@@ -316,7 +321,7 @@ namespace ControlsUI
         /// Abre/Cierra la subGrilla de detalle
         /// </summary>
         /// <param name="rowIndex">Índice del registro a editar</param>
-        private void OpenDetail(int rowIndex)
+        private void ExpandDetail(int rowIndex)
         {
             if (lstCurrentRows.Contains(rowIndex))
             {
@@ -381,7 +386,7 @@ namespace ControlsUI
         private void detailTabControl_OpenDetail()
         {
             // Se invoca al método que abre/cierra la grilla de detalle
-            OpenDetail(this.CurrentRow.Index);
+            ExpandDetail(this.CurrentRow.Index);
         }
 
         private void MasterControl_Scroll(object sender, ScrollEventArgs e)

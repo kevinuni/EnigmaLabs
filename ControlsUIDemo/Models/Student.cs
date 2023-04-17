@@ -24,14 +24,6 @@ namespace ControlsUIDemo
         {
         }
 
-        public Student(int id, string firstName, string lastName, List<Qualifications> notes)
-        {
-            FirstName = firstName;
-            LastName = lastName;
-            Id = id;
-            lstQualifications = notes;
-        }
-
         public static List<Student> getStudents()
         {
             List<Student> list = new List<Student>()

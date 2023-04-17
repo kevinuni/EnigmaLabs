@@ -12,9 +12,9 @@ namespace ControlsUI
 
         public event OpenDetailDelegate openDetailEvent;
 
-        private IConfigGrid _configGrid;
+        private IGridConfiguration _configGrid;
 
-        public DetailTabControl(IConfigGrid configGrid)
+        public DetailTabControl(IGridConfiguration configGrid)
         {
             _configGrid = configGrid;
         }
@@ -56,7 +56,7 @@ namespace ControlsUI
             childGrid.KeyDown += grid_KeyDown;
 
             Type childType = TypeMethods.HeuristicallyDetermineType(listOfDetail);
-            _configGrid.ConfigChildColumns(childGrid, childType);
+            _configGrid.ConfigChildGrid(childGrid, childType);
             _configGrid.ApplyTheme(childGrid);
 
             // Agregar la data
@@ -64,8 +64,6 @@ namespace ControlsUI
             bs.DataSource = listOfDetail;
             bs.AllowNew = true;
             childGrid.DataSource = bs;
-
-            //cModule.setGridColumnStyleAfterBinding(childGrid);
 
             if (childType.IsGenericType)
             {

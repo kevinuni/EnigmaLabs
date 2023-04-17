@@ -4,9 +4,9 @@ using System.Windows.Forms;
 
 namespace ControlsUIDemo
 {
-    public class ConfigGrid : ConfigGridBase, IConfigGrid
+    public class ConfigGrid : ConfigGridBase, IGridConfiguration
     {
-        public void ConfigChildColumns(DataGridView childGrid, Type childType)
+        public void ConfigChildGrid(DataGridView childGrid, Type childType)
         {
             DataGridViewColumnCollection columns = childGrid.Columns;
 
@@ -23,16 +23,18 @@ namespace ControlsUIDemo
                 columns.Add(ColumnFactory.TextColumnStyle("Subject", "Subject"));
                 columns.Add(ColumnFactory.TextColumnStyle("Teacher", "Teacher"));
             }
-            else if (childType == typeof(Score))
-            {
-                columns.Add(ColumnFactory.IntegerColumnStyle("Id", "Id"));
-                columns.Add(ColumnFactory.TextColumnStyle("Score1", "Score1"));
-                columns.Add(ColumnFactory.TextColumnStyle("Score2", "Score2"));
-            }
             else
             {
                 throw new Exception("Column not configured");
             }
+        }
+
+        void IGridConfiguration.ConfigGrid(DataGridView grid)
+        {
+            DataGridViewColumnCollection columns = grid.Columns;
+            columns.Add(ColumnFactory.IntegerColumnStyle("Id", "Id"));
+            columns.Add(ColumnFactory.TextColumnStyle("FirstName", "FirstName"));
+            columns.Add(ColumnFactory.TextColumnStyle("LastName", "LastName"));
         }
     }
 }
