@@ -12,7 +12,7 @@ namespace ControlsUI
     {
         private IGridConfiguration _gridConfiguration;
 
-        public void SetConfiguration(IGridConfiguration gridConfiguration) 
+        public void SetConfiguration(IGridConfiguration gridConfiguration)
         {
             _gridConfiguration = gridConfiguration;
 
@@ -25,7 +25,7 @@ namespace ControlsUI
             };
 
             this.detailTabControl = detailTabControl;
-        }        
+        }
 
         public List<int> lstCurrentRows = new List<int>();
         public int rowDefaultHeight { get; set; } = 22;
@@ -75,8 +75,6 @@ namespace ControlsUI
             KeyDown += MasterGridView_KeyDown;
 
             Layout += MasterGridView_Layout;
-
-
         }
 
         private void MasterGridView_Layout(object sender, LayoutEventArgs e)
@@ -169,7 +167,7 @@ namespace ControlsUI
                     return;
                 }
 
-                if (string.IsNullOrWhiteSpace(description))         
+                if (string.IsNullOrWhiteSpace(description))
                 {
                     tt.Hide(this);
                 }
@@ -206,7 +204,7 @@ namespace ControlsUI
             bool hasDetailList = false;
 
             Type currentType = null;
-            
+
             if (DataSource is BindingSource)
             {
                 currentType = ((BindingSource)DataSource).Current.GetType();
@@ -245,11 +243,10 @@ namespace ControlsUI
                 this.Parent.Controls.Add(detailTabControl);
                 detailTabControl.BringToFront();
             }
-            else 
+            else
             {
                 throw new Exception("The control should be in a container.");
             }
-            
         }
 
         private void MasterControl_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
@@ -356,8 +353,8 @@ namespace ControlsUI
                 {
                     foreach (FieldInfo childField in parentType.GetFields())
                     {
-                        if (IsNonPrimitiveList(childField.FieldType)) 
-                        { 
+                        if (IsNonPrimitiveList(childField.FieldType))
+                        {
                             IList listOfDetail = (IList)childField.GetValue(parentObject);
 
                             string tabTitle = TypeMethods.GetDescriptionFromFieldInfo(childField);

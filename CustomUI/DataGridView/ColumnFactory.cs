@@ -111,48 +111,10 @@ namespace ControlsUI
             return column;
         }
 
-        public static DataGridViewTextBoxColumn DateColumnStyle(string pDataPropertyName, string pHeaderText, bool pReadOnly, bool pVisible = true)
+        public static DataGridViewTextBoxColumn DateTimeColumnStyle(string pDataPropertyName, string pHeaderText, int width, string format, bool pReadOnly = false, bool pVisible = true)
         {
             DataGridViewTextBoxColumn column = new DataGridViewTextBoxColumn();
-            column.CellTemplate.Style.Format = Constantes.DATE_FORMAT;
-            column.CellTemplate.Style.NullValue = string.Empty;
-            column.CellTemplate.Style.Alignment = DataGridViewContentAlignment.MiddleRight;
-            column.DataPropertyName = pDataPropertyName;
-            column.HeaderText = pHeaderText;
-            column.Name = pDataPropertyName;
-            column.ReadOnly = pReadOnly;
-            if (pReadOnly)
-            {
-                column.DefaultCellStyle.ForeColor = Color.Gray;
-            }
-            column.Visible = pVisible;
-            column.Width = 85;
-            return column;
-        }
-
-        public static DataGridViewTextBoxColumn TimeColumnStyle(string pDataPropertyName, string pHeaderText, int width, bool pReadOnly = false, bool pVisible = true)
-        {
-            DataGridViewTextBoxColumn column = new DataGridViewTextBoxColumn();
-            column.CellTemplate.Style.Format = Constantes.TIME_FORMAT;
-            column.CellTemplate.Style.NullValue = string.Empty;
-            column.CellTemplate.Style.Alignment = DataGridViewContentAlignment.MiddleRight;
-            column.DataPropertyName = pDataPropertyName;
-            column.HeaderText = pHeaderText;
-            column.Name = pDataPropertyName;
-            column.ReadOnly = pReadOnly;
-            if (pReadOnly)
-            {
-                column.DefaultCellStyle.ForeColor = Color.Gray;
-            }
-            column.Visible = pVisible;
-            column.Width = width;
-            return column;
-        }
-
-        public static DataGridViewTextBoxColumn DateTimeColumnStyle(string pDataPropertyName, string pHeaderText, int width, bool pReadOnly = false, bool pVisible = true)
-        {
-            DataGridViewTextBoxColumn column = new DataGridViewTextBoxColumn();
-            column.CellTemplate.Style.Format = Constantes.DATETIME_FORMAT;
+            column.CellTemplate.Style.Format = format;
             column.CellTemplate.Style.NullValue = string.Empty;
             column.CellTemplate.Style.Alignment = DataGridViewContentAlignment.MiddleRight;
             column.DataPropertyName = pDataPropertyName;
@@ -173,7 +135,7 @@ namespace ControlsUI
             NumberFormatInfo nfi = (NumberFormatInfo)CultureInfo.CurrentCulture.NumberFormat.Clone();
             nfi.NumberDecimalSeparator = ".";
             nfi.NumberDecimalDigits = decimaldigits;
-            nfi.NumberGroupSeparator = Constantes.NUMBERGROUPSEPARATOR;
+            nfi.NumberGroupSeparator = ",";
 
             TNumEditDataGridViewColumn column = new TNumEditDataGridViewColumn();
             column.AllowNegative = false;

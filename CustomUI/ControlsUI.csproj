@@ -57,7 +57,7 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Constantes.cs" />
-    <Compile Include="DataGridView\DataGridViewToExcel.cs" />
+    <Compile Include="DataGridView\DataGridViewExtension.cs" />
     <Compile Include="Formulario.cs" />
     <Compile Include="frmFinder.cs">
       <SubType>Form</SubType>
