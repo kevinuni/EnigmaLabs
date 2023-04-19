@@ -63,7 +63,7 @@ namespace ControlsUI
         /// Importante: Invocar después de llenar las columnas
         /// </summary>
         /// <param name="dataGridView"></param>
-        public void SetGridColumnStyleAfterBinding(DataGridView dataGridView)
+        public void SetDefaultCellStyle(DataGridView dataGridView)
         {
             foreach (DataGridViewColumn column in dataGridView.Columns)
             {

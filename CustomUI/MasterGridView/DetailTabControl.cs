@@ -57,7 +57,7 @@ namespace ControlsUI
 
             Type childType = TypeMethods.HeuristicallyDetermineType(listOfDetail);
             _configGrid.ConfigChildGrid(childGrid, childType);
-            _configGrid.ApplyTheme(childGrid);
+            childGrid.ApplyTheme();
 
             // Agregar la data
             BindingSource bs = new BindingSource();

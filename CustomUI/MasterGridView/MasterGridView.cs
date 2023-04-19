@@ -82,10 +82,10 @@ namespace ControlsUI
             // Se invoca al cargar el form, similar a Load()
             BeginInvoke(new Action(() =>
             {
-                _gridConfiguration.ApplyTheme(this);
+                this.ApplyTheme();
             }));
 
-            _gridConfiguration.SetGridColumnStyleAfterBinding(this);
+            this.SetDefaultCellStyle();
             this.SetChildLevelUI();
 
             this.Layout -= MasterGridView_Layout;

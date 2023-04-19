@@ -52,12 +52,12 @@
     <Compile Include="ApplicationIdleData\TickEventArgs.cs" />
     <Compile Include="ApplicationIdleData\WarnSettings.cs" />
     <Compile Include="BE_ComboDecorator.cs" />
-    <Compile Include="DataGridView\ColumnFactory.cs" />
-    <Compile Include="DataGridView\CustomDataGridView.cs">
+    <Compile Include="ColumnFactory.cs" />
+    <Compile Include="CustomDataGridView.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Constantes.cs" />
-    <Compile Include="DataGridView\DataGridViewExtension.cs" />
+    <Compile Include="DataGridViewExtension.cs" />
     <Compile Include="Formulario.cs" />
     <Compile Include="frmFinder.cs">
       <SubType>Form</SubType>

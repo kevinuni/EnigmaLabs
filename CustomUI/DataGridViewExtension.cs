@@ -241,6 +241,6 @@ namespace ControlsUI
             File.Delete(vFileName);
         }
 
-        #endregion
+        #endregion [Export To Excel]
     }
 }
