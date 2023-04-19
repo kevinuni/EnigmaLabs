@@ -97,7 +97,7 @@
     <Compile Include="EqualsExample.cs" />
     <Compile Include="NumberFormat.cs" />
     <Compile Include="Periodo.cs" />
-    <Compile Include="PrintfTools\ScanfNetDemo.cs" />
+    <Compile Include="Msvcrt\ScanfNet.cs" />
     <Compile Include="PrintfTools\TestPrintf.cs" />
     <Compile Include="RuntimeController.cs" />
     <Compile Include="Sockets\ClientSocket.cs" />
@@ -115,7 +115,7 @@
     <Compile Include="NumberToText.cs" />
     <Compile Include="PdfManager.cs" />
     <Compile Include="Msvcrt\ScanfWrapper.cs" />
-    <Compile Include="PrintfTools\PrintfNet.cs" />
+    <Compile Include="Msvcrt\PrintfNet.cs" />
     <Compile Include="PrintfTools\PrintfNetDemo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RawPrinter.cs" />
