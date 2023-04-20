@@ -7,7 +7,7 @@ using System.IO;
 using System.Windows.Forms;
 using Enigma.Util;
 
-namespace ControlsUI
+namespace Enigma.ControlsUI
 {
     public static class DataGridViewExtension
     {

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
 
-namespace ControlsUI
+namespace Enigma.ControlsUI
 {
     public partial class CustomForm : Form
     {

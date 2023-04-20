@@ -1,5 +1,5 @@
 ﻿using System.Windows.Forms;
-namespace ControlsUI
+namespace Enigma.ControlsUI
 {
     partial class KSelector<T, W>
     {

@@ -3,7 +3,7 @@ using System.ComponentModel;
 using System.Drawing;
 using System.Windows.Forms;
 
-namespace ControlsUI
+namespace Enigma.ControlsUI
 {
     [ToolboxBitmap(typeof(TextBox))]
     public partial class NumericTextBox : System.Windows.Forms.TextBox

@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace ControlsUI
+namespace Enigma.ControlsUI
 {
     public class Formulario
     {

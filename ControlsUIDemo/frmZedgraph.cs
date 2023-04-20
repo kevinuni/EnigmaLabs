@@ -1,4 +1,4 @@
-using ControlsUI;
+using Enigma.ControlsUI;
 using System;
 using System.Drawing;
 using ZedGraph;

@@ -6,7 +6,7 @@ using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
 
-namespace ControlsUI
+namespace Enigma.ControlsUI
 {
     public partial class MainToolStripMenuItem : ToolStripMenuItem
     {

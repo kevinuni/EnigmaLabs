@@ -1,4 +1,4 @@
-﻿namespace ControlsUI
+﻿namespace Enigma.ControlsUI
 {
     partial class CustomForm
     {

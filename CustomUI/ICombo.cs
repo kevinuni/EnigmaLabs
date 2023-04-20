@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace ControlsUI
+namespace Enigma.ControlsUI
 {
     public interface ICombo
     {

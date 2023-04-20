@@ -4,7 +4,7 @@ using System.Drawing;
 using System.Windows.Forms;
 using Enigma.Util;
 
-namespace ControlsUI
+namespace Enigma.ControlsUI
 {
     public class DetailTabControl : TabControl
     {

@@ -1,7 +1,7 @@
 ﻿using System.Drawing;
 using System.Windows.Forms;
 
-namespace ControlsUI
+namespace Enigma.ControlsUI
 {
     /// <summary>
     /// La grilla tiene el comportamiento de que al presionar ENTER en una celda, se pasa a la siguiente celda a la DERECHA

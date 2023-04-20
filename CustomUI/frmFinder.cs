@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Windows.Forms;
 using Enigma.Util;
 
-namespace ControlsUI
+namespace Enigma.ControlsUI
 {
     public partial class frmFinder<T, W> : CustomForm where T : IEntityToSearch where W : IDriver<T>, new()
     {

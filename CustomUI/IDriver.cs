@@ -5,7 +5,7 @@ using System.Collections;
 using System.Windows.Forms;
 
 
-namespace ControlsUI
+namespace Enigma.ControlsUI
 {
     /// <summary>
     /// IFinder es la interfase de una entidad que implementa métodos de búsqueda

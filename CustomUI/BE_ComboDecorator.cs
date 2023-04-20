@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Reflection;
 
-namespace ControlsUI
+namespace Enigma.ControlsUI
 {
     public class BE_ComboDecorator<T>// : IEnumerable<T>
     {

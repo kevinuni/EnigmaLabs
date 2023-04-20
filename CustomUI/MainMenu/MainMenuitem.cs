@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections;
 
-namespace ControlsUI
+namespace Enigma.ControlsUI
 {
     public class MainMenuitem
     {

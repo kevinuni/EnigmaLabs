@@ -6,7 +6,7 @@ using System.Reflection;
 using System.Windows.Forms;
 using Enigma.Util;
 
-namespace ControlsUI
+namespace Enigma.ControlsUI
 {
     public class MasterGridView : DataGridView
     {

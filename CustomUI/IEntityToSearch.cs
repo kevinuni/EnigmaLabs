@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace ControlsUI
+namespace Enigma.ControlsUI
 {
     /// <summary>
     /// Interface para las entidades que serán devueltas por el control de búsqueda

@@ -1,6 +1,6 @@
 ﻿using System.Windows.Forms;
 
-namespace ControlsUI
+namespace Enigma.ControlsUI
 {
     public static class MessageDlg
     {
