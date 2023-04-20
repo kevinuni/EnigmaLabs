@@ -395,5 +395,17 @@ namespace ControlsUIDemo
         }
 
         #endregion "checkbox state"
+
+        private void InitializeComponent()
+        {
+            this.SuspendLayout();
+            // 
+            // frmGridview
+            // 
+            this.ClientSize = new System.Drawing.Size(284, 261);
+            this.Name = "frmGridview";
+            this.ResumeLayout(false);
+
+        }
     }
 }

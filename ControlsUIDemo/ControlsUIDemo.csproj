@@ -131,6 +131,9 @@
     <EmbeddedResource Include="frmExcel.resx">
       <DependentUpon>frmExcel.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmGridview.resx">
+      <DependentUpon>frmGridview.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Mail\frmExchange.resx">
       <DependentUpon>frmExchange.cs</DependentUpon>
     </EmbeddedResource>

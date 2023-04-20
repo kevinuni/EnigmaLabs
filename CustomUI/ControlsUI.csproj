@@ -94,7 +94,6 @@
     <Compile Include="MainMenu\MainToolStripMenuItem.Designer.cs">
       <DependentUpon>MainToolStripMenuItem.cs</DependentUpon>
     </Compile>
-    <Compile Include="MasterGridView\ConfigGridBase.cs" />
     <Compile Include="MasterGridView\Datos.Designer.cs" />
     <Compile Include="MasterGridView\DetailTabControl.cs">
       <SubType>Component</SubType>

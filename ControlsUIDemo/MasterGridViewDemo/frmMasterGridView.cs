@@ -6,7 +6,7 @@ namespace ControlsUIDemo
 {
     public partial class frmMasterGridView : Form
     {
-        private ConfigGrid configGrid = new ConfigGrid();
+        private CustomConfigGrid configGrid = new CustomConfigGrid();
 
         public frmMasterGridView()
         {
