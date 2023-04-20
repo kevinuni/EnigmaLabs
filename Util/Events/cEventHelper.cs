@@ -6,7 +6,7 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Util.Events
+namespace Enigma.Util.Events
 {
     static public class cEventHelper
     {

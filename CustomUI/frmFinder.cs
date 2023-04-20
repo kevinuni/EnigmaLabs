@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
-using Util;
+using Enigma.Util;
 
 namespace ControlsUI
 {
-    public partial class frmFinder<T, W> : KForm where T : IEntityToSearch where W : IDriver<T>, new()
+    public partial class frmFinder<T, W> : CustomForm where T : IEntityToSearch where W : IDriver<T>, new()
     {
         private W m_Driver;
 

@@ -4,7 +4,7 @@ using System;
 using System.Collections;
 using System.IO;
 
-namespace Util
+namespace Enigma.Util
 {
     public class ZipManager
     {

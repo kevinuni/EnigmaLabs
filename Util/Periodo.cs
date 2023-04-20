@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Util
+namespace Enigma.Util
 {
     public class Periodo
     {

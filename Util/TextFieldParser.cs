@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Util
+namespace Enigma.Util
 {
     [Serializable]
     public class TextFieldParser

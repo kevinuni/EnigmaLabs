@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Runtime.InteropServices;
 
-namespace Util
+namespace Enigma.Util
 {
     public class RawPrinter
     {

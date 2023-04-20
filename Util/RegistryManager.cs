@@ -1,7 +1,7 @@
 using Microsoft.Win32;
 using System;
 
-namespace Util
+namespace Enigma.Util
 {
     public class RegistryManager
     {

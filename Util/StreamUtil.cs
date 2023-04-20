@@ -2,7 +2,7 @@
 using System.IO;
 using System.Threading.Tasks;
 
-namespace Util
+namespace Enigma.Util
 {
     public class StreamUtil
     {

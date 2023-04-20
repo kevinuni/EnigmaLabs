@@ -2,7 +2,7 @@
 using System.Runtime.InteropServices;
 using System.Text;
 
-namespace Util.PrintfTools
+namespace Enigma.Util.PrintfTools
 {
     public class TestPrintf
     {

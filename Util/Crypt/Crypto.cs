@@ -11,7 +11,7 @@ using System.Text;
 // Jeff Atwood
 // http://www.codinghorror.com/
 // </remarks>
-namespace Util.Crypt
+namespace Enigma.Util.Crypt
 {
     public class Crypto
     {

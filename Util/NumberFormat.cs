@@ -1,6 +1,6 @@
 ﻿using System.Globalization;
 
-namespace Util
+namespace Enigma.Util
 {
     public class NumberFormat
     {

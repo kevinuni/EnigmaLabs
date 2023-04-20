@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Globalization;
 
-namespace Util.Strings
+namespace Enigma.Util.Strings
 {
     public class StringFormatter
     {

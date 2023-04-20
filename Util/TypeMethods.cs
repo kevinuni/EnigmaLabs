@@ -5,7 +5,7 @@ using System.ComponentModel;
 using System.Linq;
 using System.Reflection;
 
-namespace Util
+namespace Enigma.Util
 {
     public class TypeMethods
     {

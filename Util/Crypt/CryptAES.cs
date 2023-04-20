@@ -6,7 +6,7 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Util.Crypt
+namespace Enigma.Util.Crypt
 {
     public class CryptAES
     {

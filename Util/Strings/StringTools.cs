@@ -4,7 +4,7 @@ using System.Text;
 using System.Globalization;
 using System.Text.RegularExpressions;
 
-namespace Util
+namespace Enigma.Util
 {
     public static class StringTools
     {

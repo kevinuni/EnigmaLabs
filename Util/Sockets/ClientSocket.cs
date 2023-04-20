@@ -6,7 +6,7 @@ using System.Net.Sockets;
 using System.Text;
 using System.Xml.Serialization;
 
-namespace Util
+namespace Enigma.Util
 {
     public class ClientSocket
     {

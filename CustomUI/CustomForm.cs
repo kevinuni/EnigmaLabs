@@ -3,7 +3,7 @@ using System.Windows.Forms;
 
 namespace ControlsUI
 {
-    public partial class KForm : Form
+    public partial class CustomForm : Form
     {
         #region [Enumerates]
 
@@ -40,7 +40,7 @@ namespace ControlsUI
             set { m_FormMode = value; }
         }
 
-        public KForm()
+        public CustomForm()
         {
             InitializeComponent();
 

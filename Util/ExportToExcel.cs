@@ -8,7 +8,7 @@ using System.Reflection;
 using System.Runtime.InteropServices;
 using System.Threading;
 
-namespace Util
+namespace Enigma.Util
 {
     public static class ExportToExcel
     {

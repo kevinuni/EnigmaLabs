@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Util.Patterns
+namespace Enigma.Util.Patterns
 {
     /// <summary>
     /// Good implementation of Equals() GetHashCode() and == and != operators

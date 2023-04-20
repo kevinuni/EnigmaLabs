@@ -3,7 +3,7 @@ using System;
 using System.Collections;
 using System.IO;
 using System.Windows.Forms;
-using Util.Mail;
+using Enigma.Util.Mail;
 
 namespace ControlsUIDemo
 {

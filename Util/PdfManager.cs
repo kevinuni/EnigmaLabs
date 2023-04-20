@@ -3,7 +3,7 @@ using PdfSharp.Pdf.IO;
 using PdfSharp.Pdf.Security;
 using System.IO;
 
-namespace Util
+namespace Enigma.Util
 {
     public class PdfManager
     {

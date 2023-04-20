@@ -3,7 +3,7 @@ using System.ComponentModel;
 using System.Runtime.InteropServices;
 using System.Security.Principal;
 
-namespace Util
+namespace Enigma.Util
 {
     public class ImpersonateUser : IDisposable
     {

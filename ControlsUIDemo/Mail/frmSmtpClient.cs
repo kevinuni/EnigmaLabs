@@ -1,7 +1,7 @@
 ﻿using ControlsUI;
 using System;
 using System.Windows.Forms;
-using Util.Mail;
+using Enigma.Util.Mail;
 
 namespace ControlsUIDemo
 {

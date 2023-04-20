@@ -4,7 +4,7 @@ using System.Data;
 using System.IO;
 using System.Text;
 
-namespace Util
+namespace Enigma.Util
 {
     public class MailMerge
     {

@@ -2,7 +2,7 @@
 using System;
 using System.IO;
 
-namespace Util.LicenseManager
+namespace Enigma.Util.LicenseManager
 {
     public class LicenseController
     {

@@ -68,11 +68,11 @@
     <Compile Include="ICombo.cs" />
     <Compile Include="IDriver.cs" />
     <Compile Include="IEntityToSearch.cs" />
-    <Compile Include="KForm.cs">
+    <Compile Include="CustomForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="KForm.designer.cs">
-      <DependentUpon>KForm.cs</DependentUpon>
+    <Compile Include="CustomForm.designer.cs">
+      <DependentUpon>CustomForm.cs</DependentUpon>
     </Compile>
     <Compile Include="KSelector.cs">
       <SubType>UserControl</SubType>
@@ -124,8 +124,8 @@
     <EmbeddedResource Include="frmFinder.resx">
       <DependentUpon>frmFinder.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="KForm.resx">
-      <DependentUpon>KForm.cs</DependentUpon>
+    <EmbeddedResource Include="CustomForm.resx">
+      <DependentUpon>CustomForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="KSelector.resx">
       <DependentUpon>KSelector.cs</DependentUpon>

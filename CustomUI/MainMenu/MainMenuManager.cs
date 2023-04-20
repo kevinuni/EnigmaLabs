@@ -151,19 +151,19 @@ namespace ControlsUI
 
                 if (modopresentacion.HasValue && modopresentacion.Value == MODOPRESENTACION_NUEVO)
                 {
-                    arr.Add(KForm.FORM_MODE.New);
+                    arr.Add(CustomForm.FORM_MODE.New);
                 }
                 else if (modopresentacion.HasValue && modopresentacion.Value == MODOPRESENTACION_EDICION)
                 {
-                    arr.Add(KForm.FORM_MODE.Edition);
+                    arr.Add(CustomForm.FORM_MODE.Edition);
                 }
                 else if (modopresentacion.HasValue && modopresentacion.Value == MODOPRESENTACION_SELECCION)
                 {
-                    arr.Add(KForm.FORM_MODE.Selection);
+                    arr.Add(CustomForm.FORM_MODE.Selection);
                 }
                 else if (modopresentacion.HasValue && modopresentacion.Value == MODOPRESENTACION_VISUALIZACION)
                 {
-                    arr.Add(KForm.FORM_MODE.Visualization);
+                    arr.Add(CustomForm.FORM_MODE.Visualization);
                 }
 
                 Object remoteObj = Activator.CreateInstance(type, arr.ToArray());

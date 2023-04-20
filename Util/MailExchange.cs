@@ -4,7 +4,7 @@ using System.Collections;
 using System.Net;
 using System.Net.Mail;
 
-namespace Util.Mail
+namespace Enigma.Util.Mail
 {
     public class MailExchange
     {

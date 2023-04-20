@@ -1,6 +1,6 @@
 ﻿using System.Text.RegularExpressions;
 
-namespace Util.Validators
+namespace Enigma.Util.Validators
 {
     public class FormatValidator
     {

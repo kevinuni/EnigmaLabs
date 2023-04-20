@@ -3,7 +3,7 @@ using System.ComponentModel;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 
-namespace Util
+namespace Enigma.Util
 {
     public class TypeConverters
     {

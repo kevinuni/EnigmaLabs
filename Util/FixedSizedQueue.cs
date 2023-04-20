@@ -1,6 +1,6 @@
 ﻿using System.Collections.Concurrent;
 
-namespace Util
+namespace Enigma.Util
 {
     public class FixedSizedQueue<T>
     {

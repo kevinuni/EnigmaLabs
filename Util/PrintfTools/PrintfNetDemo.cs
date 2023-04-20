@@ -9,7 +9,7 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Util
+namespace Enigma.Util
 {
     [Serializable]
     public class PrintfNetDemo

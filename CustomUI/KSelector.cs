@@ -194,7 +194,7 @@ namespace ControlsUI
 
         private void btnFinder_Click(object sender, EventArgs e)
         {
-            frmFinder<T, W> form = new frmFinder<T, W>(KForm.FORM_MODE.Selection);
+            frmFinder<T, W> form = new frmFinder<T, W>(CustomForm.FORM_MODE.Selection);
 
             if (form.ShowDialog() == DialogResult.OK)
             {

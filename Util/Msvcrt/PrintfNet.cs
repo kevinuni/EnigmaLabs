@@ -6,7 +6,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
-namespace Util
+namespace Enigma.Util
 {
     [Serializable]
     public static class PrintfNet

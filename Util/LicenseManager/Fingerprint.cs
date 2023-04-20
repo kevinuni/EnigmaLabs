@@ -11,7 +11,7 @@ using System.Data;
 using System.Reflection;
 using System.Text;
 
-namespace Util
+namespace Enigma.Util
 {
     public class Fingerprint
     //Fingerprints the hardware

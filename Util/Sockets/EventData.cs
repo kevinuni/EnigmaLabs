@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Util
+namespace Enigma.Util
 {
     [Serializable]
     public class EventData

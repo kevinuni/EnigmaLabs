@@ -1,6 +1,6 @@
 ﻿namespace ControlsUI
 {
-    partial class KForm
+    partial class CustomForm
     {
         /// <summary>
         /// Required designer variable.

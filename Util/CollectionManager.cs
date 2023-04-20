@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Reflection;
 
-namespace Util
+namespace Enigma.Util
 {
     public class CollectionManager
     {

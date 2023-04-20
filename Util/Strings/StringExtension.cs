@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Util.Strings
+namespace Enigma.Util.Strings
 {
     public static class StringExtension
     {

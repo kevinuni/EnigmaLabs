@@ -1,8 +1,8 @@
 ﻿using ControlsUI;
 using System;
 using System.Windows.Forms;
-using Util;
-using Util.Crypt;
+using Enigma.Util;
+using Enigma.Util.Crypt;
 
 namespace ControlsUIDemo
 {

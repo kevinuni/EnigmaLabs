@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Util
+namespace Enigma.Util
 {
     internal class ScanfNet
     {
@@ -29,7 +29,7 @@ namespace Util
             }
 
             int v_arg0 = 0;
-            Util.ScanfWrapper.sscanf(buffer, format, ref v_arg0);
+            Enigma.Util.ScanfWrapper.sscanf(buffer, format, ref v_arg0);
             Debug.Assert(arg0 == v_arg0, "warning wrapper");
 
             return result;
@@ -120,7 +120,7 @@ namespace Util
             int v_arg31 = 0;
             int v_arg32 = 0;
 
-            Util.ScanfWrapper.sscanf(buffer, format, ref v_arg0, ref v_arg1, ref v_arg2, ref v_arg3, ref v_arg4, ref v_arg5, ref v_arg6, ref v_arg7, ref v_arg8, ref v_arg9, ref v_arg10, ref v_arg11, ref v_arg12, ref v_arg13, ref v_arg14, ref v_arg15, ref v_arg16, ref v_arg17, ref v_arg18, ref v_arg19, ref v_arg20, ref v_arg21, ref v_arg22, ref v_arg23, ref v_arg24, ref v_arg25, ref v_arg26, ref v_arg27, ref v_arg28, ref v_arg29, ref v_arg30, ref v_arg31, ref v_arg32);
+            Enigma.Util.ScanfWrapper.sscanf(buffer, format, ref v_arg0, ref v_arg1, ref v_arg2, ref v_arg3, ref v_arg4, ref v_arg5, ref v_arg6, ref v_arg7, ref v_arg8, ref v_arg9, ref v_arg10, ref v_arg11, ref v_arg12, ref v_arg13, ref v_arg14, ref v_arg15, ref v_arg16, ref v_arg17, ref v_arg18, ref v_arg19, ref v_arg20, ref v_arg21, ref v_arg22, ref v_arg23, ref v_arg24, ref v_arg25, ref v_arg26, ref v_arg27, ref v_arg28, ref v_arg29, ref v_arg30, ref v_arg31, ref v_arg32);
 
             Debug.Assert(arg0 == v_arg0, "warning wrapper");
             Debug.Assert(arg1 == v_arg1, "warning wrapper");
@@ -179,7 +179,7 @@ namespace Util
             }
 
             double v_arg0 = 0;
-            Util.ScanfWrapper.sscanf(buffer, format, ref v_arg0);
+            Enigma.Util.ScanfWrapper.sscanf(buffer, format, ref v_arg0);
             Debug.Assert(arg0 == v_arg0, "warning wrapper");
 
             return result;
@@ -230,7 +230,7 @@ namespace Util
             double v_arg11 = 0;
             double v_arg12 = 0;
 
-            Util.ScanfWrapper.sscanf(buffer, format, ref v_arg0, ref v_arg1, ref v_arg2, ref v_arg3, ref v_arg4, ref v_arg5, ref v_arg6, ref v_arg7, ref v_arg8, ref v_arg9, ref v_arg10, ref v_arg11, ref v_arg12);
+            Enigma.Util.ScanfWrapper.sscanf(buffer, format, ref v_arg0, ref v_arg1, ref v_arg2, ref v_arg3, ref v_arg4, ref v_arg5, ref v_arg6, ref v_arg7, ref v_arg8, ref v_arg9, ref v_arg10, ref v_arg11, ref v_arg12);
 
             Debug.Assert(arg0 == v_arg0, "warning wrapper");
             Debug.Assert(arg1 == v_arg1, "warning wrapper");
