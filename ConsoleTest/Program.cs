@@ -1,6 +1,7 @@
 ﻿using Enigma.Util;
 using System;
 using System.Collections.Generic;
+using System.Dynamic;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
@@ -14,17 +15,30 @@ namespace ConsoleTest
         {
             HttpManager manager = HttpManager.Instance();
 
+            #region [GET]
+
             var par = new Dictionary<string, string>();
             par.Add("test", "123");
 
-            var result = Task<Root>.Run(() =>
+            var resultGet = Task<GetObject>.Run(() =>
             {
-                return manager.Get<Root>("https://postman-echo.com/get", par);
+                return manager.Get<GetObject>("https://postman-echo.com/get", par);
             });
 
-            Root root = result.GetAwaiter().GetResult();
+            GetObject getObject = resultGet.GetAwaiter().GetResult();
 
-            dynamic param = new { test = "123" };
+            #endregion [GET]
+
+            #region [POST]
+
+            var resultPost = Task<PostObject>.Run(() =>
+            {
+                return manager.Post<string, PostObject>("https://postman-echo.com/post", "texto de prueba");
+            });
+
+            PostObject postObject = resultPost.GetAwaiter().GetResult();
+
+            #endregion [POST]
 
         }
     }

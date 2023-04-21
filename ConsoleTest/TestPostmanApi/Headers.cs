@@ -1,19 +1,12 @@
 ﻿using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace ConsoleTest
 {
-    // Root myDeserializedClass = JsonConvert.DeserializeObject<Root>(myJsonResponse);
-    public class Args
-    {
-        public string test { get; set; }
-    }
-
     public class Headers
     {
         [JsonProperty("x-forwarded-proto")]
@@ -36,14 +29,11 @@ namespace ConsoleTest
         [JsonProperty("accept-encoding")]
         public string acceptencoding { get; set; }
         public string cookie { get; set; }
+
+        [JsonProperty("content-length")]
+        public string contentlength { get; set; }
+
+        [JsonProperty("content-type")]
+        public string contenttype { get; set; }
     }
-
-    public class Root
-    {
-        public Args args { get; set; }
-        public Headers headers { get; set; }
-        public string url { get; set; }
-    }
-
-
 }

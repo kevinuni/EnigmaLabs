@@ -5,6 +5,7 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Net.Http.Headers;
+using System.Security.Policy;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -80,6 +81,8 @@ namespace Enigma.Util
                 }
 
                 uri = uri + "?" +query.ToString().TrimEnd('&');
+
+                //uri = WebUtility.UrlEncode(uri);
             }
 
             HttpRequestMessage requestMessage = new HttpRequestMessage(HttpMethod.Get, uri);
@@ -108,24 +111,39 @@ namespace Enigma.Util
             }
         }
 
+        public async Task<W> Post<T, W>(string uri, T objT, Dictionary<string, string> headers = null) 
+        {
+            //uri = WebUtility.UrlEncode(uri);
 
+            HttpRequestMessage requestMessage = new HttpRequestMessage(HttpMethod.Post, uri);
+            
+            string bodyContent = JsonConvert.SerializeObject(objT);
 
+            requestMessage.Content = bodyContent != null ? new StringContent(bodyContent, Encoding.UTF8, "application/json") : null;
 
-        //string bodyContent = string.Empty;
-        //HttpContent content = bodyContent != null ? new StringContent(bodyContent, Encoding.UTF8, "application/json") : null;
+            if (headers != null && headers.Count > 0)
+            {
+                foreach (var item in headers)
+                {
+                    requestMessage.Headers.Add(item.Key, item.Value);
+                }
+            }
 
+            ServicePointManager.ServerCertificateValidationCallback += (sender, cert, chain, sslPolicyErrors) => true;
+            HttpResponseMessage response = await httpClient.SendAsync(requestMessage);
+            response.EnsureSuccessStatusCode();
 
-        //public async Task<W> Post<T,W>(string uri, T objT) where T : new()
-        //{
-        //    HttpRequestMessage requestMessage = new HttpRequestMessage(HttpMethod.Post, uri);
-        //    requestMessage.Content = new StringContent(JsonConvert.SerializeObject(objT), Encoding.UTF8, "application/json");
-        //    ServicePointManager.ServerCertificateValidationCallback += (sender, cert, chain, sslPolicyErrors) => true;
-        //    HttpResponseMessage response = await httpClient.SendAsync(requestMessage);
-        //    response.EnsureSuccessStatusCode();
-        //    T model = await response.Content.ReadAsAsync<W>();
-
-        //    return model;
-        //}
+            if (typeof(W) == typeof(byte[]))
+            {
+                byte[] data = await response.Content.ReadAsByteArrayAsync();
+                return (W)(object)data;
+            }
+            else
+            {
+                string json = await response.Content.ReadAsStringAsync();
+                return JsonConvert.DeserializeObject<W>(json);
+            }
+        }
 
         //public async Task<T> Put<T>(string uri, T objT, int id)
         //{

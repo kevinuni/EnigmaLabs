@@ -46,7 +46,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="PostDemo.cs" />
+    <Compile Include="TestPostmanApi\Args.cs" />
+    <Compile Include="TestPostmanApi\Files.cs" />
+    <Compile Include="TestPostmanApi\Form.cs" />
+    <Compile Include="GetObject.cs" />
+    <Compile Include="TestPostmanApi\Headers.cs" />
+    <Compile Include="PostObject.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
