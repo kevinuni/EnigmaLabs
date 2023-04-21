@@ -7,7 +7,7 @@
     <ProjectGuid>{AB0D5CA7-0870-4B51-A340-B1339BAAD2C0}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Util</RootNamespace>
+    <RootNamespace>Enigma.Util</RootNamespace>
     <AssemblyName>Util</AssemblyName>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
@@ -89,8 +89,10 @@
   <ItemGroup>
     <Compile Include="DataTable\DataTableExtension.cs" />
     <Compile Include="Constants.cs" />
+    <Compile Include="DemoClass.cs" />
     <Compile Include="Events\cEventHelper.cs" />
     <Compile Include="FixedSizedQueue.cs" />
+    <Compile Include="HttpManager.cs" />
     <Compile Include="LicenseManager\LicenseController.cs" />
     <Compile Include="MailExchange.cs" />
     <Compile Include="Msvcrt\PrintfWrapper.cs" />

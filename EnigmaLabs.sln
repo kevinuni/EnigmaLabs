@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LicenseGenerator", "License
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ControlsUIDemo", "ControlsUIDemo\ControlsUIDemo.csproj", "{7F43C86C-82E7-405A-96A6-5703D9B72EBE}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleTest", "ConsoleTest\ConsoleTest.csproj", "{0289387B-36AA-4709-9FCD-98757A376561}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -83,6 +85,18 @@ Global
 		{7F43C86C-82E7-405A-96A6-5703D9B72EBE}.Release|x64.Build.0 = Release|Any CPU
 		{7F43C86C-82E7-405A-96A6-5703D9B72EBE}.Release|x86.ActiveCfg = Release|Any CPU
 		{7F43C86C-82E7-405A-96A6-5703D9B72EBE}.Release|x86.Build.0 = Release|Any CPU
+		{0289387B-36AA-4709-9FCD-98757A376561}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0289387B-36AA-4709-9FCD-98757A376561}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0289387B-36AA-4709-9FCD-98757A376561}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{0289387B-36AA-4709-9FCD-98757A376561}.Debug|x64.Build.0 = Debug|Any CPU
+		{0289387B-36AA-4709-9FCD-98757A376561}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{0289387B-36AA-4709-9FCD-98757A376561}.Debug|x86.Build.0 = Debug|Any CPU
+		{0289387B-36AA-4709-9FCD-98757A376561}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0289387B-36AA-4709-9FCD-98757A376561}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0289387B-36AA-4709-9FCD-98757A376561}.Release|x64.ActiveCfg = Release|Any CPU
+		{0289387B-36AA-4709-9FCD-98757A376561}.Release|x64.Build.0 = Release|Any CPU
+		{0289387B-36AA-4709-9FCD-98757A376561}.Release|x86.ActiveCfg = Release|Any CPU
+		{0289387B-36AA-4709-9FCD-98757A376561}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

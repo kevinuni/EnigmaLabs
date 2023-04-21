@@ -7,7 +7,7 @@
     <ProjectGuid>{E1723C68-3E77-4657-B72A-A70340BF3B25}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>ControlsUI</RootNamespace>
+    <RootNamespace>Enigma.ControlsUI</RootNamespace>
     <AssemblyName>ControlsUI</AssemblyName>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
