@@ -399,13 +399,12 @@ namespace ControlsUIDemo
         private void InitializeComponent()
         {
             this.SuspendLayout();
-            // 
+            //
             // frmGridview
-            // 
+            //
             this.ClientSize = new System.Drawing.Size(284, 261);
             this.Name = "frmGridview";
             this.ResumeLayout(false);
-
         }
     }
 }

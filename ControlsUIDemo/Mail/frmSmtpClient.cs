@@ -1,7 +1,7 @@
 ﻿using Enigma.ControlsUI;
+using Enigma.Util.Mail;
 using System;
 using System.Windows.Forms;
-using Enigma.Util.Mail;
 
 namespace ControlsUIDemo
 {
@@ -40,7 +40,6 @@ namespace ControlsUIDemo
 
         private void frmSmtpClient_Load(object sender, EventArgs e)
         {
-
         }
     }
 }

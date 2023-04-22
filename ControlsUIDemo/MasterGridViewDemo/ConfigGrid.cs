@@ -13,8 +13,8 @@ namespace ControlsUIDemo
             columns.Add(ColumnFactory.IntegerColumnStyle("Id", "Id"));
             columns.Add(ColumnFactory.TextColumnStyle("FirstName", "Nombre"));
             columns.Add(ColumnFactory.TextColumnStyle("LastName", "Apellido"));
-
         }
+
         public void ConfigChildGrid(DataGridView childGrid, Type childType)
         {
             DataGridViewColumnCollection columns = childGrid.Columns;
@@ -37,7 +37,5 @@ namespace ControlsUIDemo
                 throw new Exception("Column not configured");
             }
         }
-
-        
     }
 }

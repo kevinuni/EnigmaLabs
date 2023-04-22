@@ -1,9 +1,9 @@
 ﻿using Enigma.ControlsUI;
+using Enigma.Util;
 using System;
 using System.Collections;
 using System.IO;
 using System.Windows.Forms;
-using Enigma.Util;
 
 namespace ControlsUIDemo
 {

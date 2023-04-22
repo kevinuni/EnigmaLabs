@@ -1,9 +1,9 @@
 ﻿using Enigma.ControlsUI;
+using Enigma.Util.Mail;
 using System;
 using System.Collections;
 using System.IO;
 using System.Windows.Forms;
-using Enigma.Util.Mail;
 
 namespace ControlsUIDemo
 {
@@ -102,7 +102,6 @@ namespace ControlsUIDemo
 
         private void frmExchange_Load(object sender, EventArgs e)
         {
-
         }
     }
 }

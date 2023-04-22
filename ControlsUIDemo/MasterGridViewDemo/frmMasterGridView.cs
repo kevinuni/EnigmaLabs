@@ -30,7 +30,6 @@ namespace ControlsUIDemo
 
             dgv.DataSource = bs;
             dgv.Dock = DockStyle.Fill;
-
         }
     }
 }

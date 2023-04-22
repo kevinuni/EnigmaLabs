@@ -1,10 +1,10 @@
 ﻿using Enigma.ControlsUI;
+using Enigma.Util;
 using System;
 using System.Collections;
 using System.Data;
 using System.IO;
 using System.Windows.Forms;
-using Enigma.Util;
 
 namespace ControlsUIDemo
 {
@@ -15,8 +15,6 @@ namespace ControlsUIDemo
             InitializeComponent();
             ThemeManager.UseTheme(this);
         }
-
-        
 
         private void btnMerge_Click(object sender, EventArgs e)
         {
