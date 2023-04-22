@@ -4,8 +4,8 @@
     {
         private static void Main(string[] args)
         {
-            //TestPostmanApi.TestPostman.Run();
-            TestGoRestApi.TestGoRest.Run();
+            TestPostmanApi.TestPostman.Run();
+            //TestGoRestApi.TestGoRest.Run();
         }
     }
 }

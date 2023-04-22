@@ -9,31 +9,16 @@ namespace ConsoleTest.TestPostmanApi
         public static void Run()
         {
             HttpManager httpManager = HttpManager.Instance();
-
-            #region [GET]
-
+            httpManager.InitializeClient("https://postman-echo.com");
             var par = new Dictionary<string, string>();
             par.Add("test", "123");
+            var resultGet = httpManager.GetAsync<GetObject>("get", par);
+            var replyGet = resultGet.GetAwaiter().GetResult();
+            GetObject dataGet = replyGet.Data;
 
-            var resultGet = Task<GetObject>.Run(() =>
-            {
-                return httpManager.Get<GetObject>("https://postman-echo.com/get", par);
-            });
-
-            Reply<GetObject> getObject = resultGet.GetAwaiter().GetResult();
-
-            #endregion [GET]
-
-            #region [POST]
-
-            var resultPost = Task<PostObject>.Run(() =>
-            {
-                return httpManager.Post<string, PostObject>("https://postman-echo.com/post", "texto de prueba");
-            });
-
-            Reply<PostObject> postObject = resultPost.GetAwaiter().GetResult();
-
-            #endregion [POST]
+            var resultPost = httpManager.PostAsync<string, PostObject>("/post", "texto de prueba");
+            var replyPost = resultPost.GetAwaiter().GetResult();
+            PostObject dataPost = replyPost.Data;
         }
     }
 }

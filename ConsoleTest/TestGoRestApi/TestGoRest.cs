@@ -14,7 +14,7 @@ namespace ConsoleTest.TestGoRestApi
 
             var resultGet = Task<dynamic>.Run(() =>
             {
-                return httpManager.Post<object, dynamic>("public/v2/users", null);
+                return httpManager.PostAsync<object, dynamic>("public/v2/users", null);
             });
 
             Reply<dynamic> getObject = resultGet.GetAwaiter().GetResult();

@@ -19,7 +19,7 @@ namespace ConsoleTest.TestWialon
 
             var resultGet = Task<string>.Run(() =>
             {
-                return httpManager.Get<string>("depots", null, headers);
+                return httpManager.GetAsync<string>("depots", null, headers);
             });
 
             Reply<string> getObject = resultGet.GetAwaiter().GetResult();
