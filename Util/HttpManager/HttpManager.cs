@@ -26,8 +26,7 @@ namespace Enigma.Util
 
         public static HttpManager Instance()
         {
-            // thread safe singleton
-            lock (syncLock)
+            lock(syncLock)
             {
                 if (_instance == null)
                 {
@@ -37,16 +36,22 @@ namespace Enigma.Util
             return _instance;
         }
 
+        public Uri InitializeClient(string baseAdress)
+        {
+            baseAdress = baseAdress.TrimEnd('/') + "/";
+
+            Uri uri = new Uri(baseAdress);
+            httpClient.BaseAddress = uri;
+            httpClient.DefaultRequestHeaders.Accept.Clear();
+            httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+            return uri;
+        }
+
         public string Token { get; set; }
 
         public void Authenticate(string baseAdress, string login, string password)
         {
-            baseAdress = baseAdress.TrimEnd('/') + "/";
-            Uri uri = new Uri(baseAdress);
-
-            httpClient.BaseAddress = uri;
-            httpClient.DefaultRequestHeaders.Clear();
-            httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+            Uri uri = InitializeClient(baseAdress);
 
             var json = GetToken(uri.AbsoluteUri, login, password);
 
@@ -55,7 +60,7 @@ namespace Enigma.Util
             httpClient.DefaultRequestHeaders.Add("Authorization", "Bearer " + Token);
         }
 
-        public string GetToken(string url, string userName, string password)
+        public string GetToken(string tokenUrl, string userName, string password)
         {
             var pairs = new List<KeyValuePair<string, string>>
                     {
@@ -64,7 +69,7 @@ namespace Enigma.Util
                     };
             var content = new FormUrlEncodedContent(pairs);
             ServicePointManager.ServerCertificateValidationCallback += (sender, cert, chain, sslPolicyErrors) => true;
-            var response = httpClient.PostAsync(url + "login/authenticate", content).GetAwaiter().GetResult();
+            var response = httpClient.PostAsync(tokenUrl, content).GetAwaiter().GetResult();
             return response.Content.ReadAsStringAsync().GetAwaiter().GetResult();
         }
 
@@ -106,6 +111,7 @@ namespace Enigma.Util
                 using (HttpResponseMessage response = await httpClient.SendAsync(requestMessage))
                 {
                     response.EnsureSuccessStatusCode();
+                    //Console.WriteLine(response.ReasonPhrase);
 
                     using (HttpContent content = response.Content)
                     {

@@ -1,4 +1,5 @@
-﻿using Enigma.ControlsUI;
+﻿using ConsoleTest.GetStudentModel;
+using Enigma.ControlsUI;
 using System;
 using System.Windows.Forms;
 
@@ -25,7 +26,7 @@ namespace ControlsUIDemo
             dgv.AutoGenerateColumns = true;
 
             BindingSource bs = new BindingSource();
-            bs.DataSource = Student.getStudents(); //Person.GetPersons();
+            bs.DataSource = Student.getStudents();
 
             dgv.DataSource = bs;
             dgv.Dock = DockStyle.Fill;
