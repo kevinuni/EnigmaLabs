@@ -13,7 +13,7 @@ namespace ConsoleTest
     {
         static void Main(string[] args)
         {
-            HttpManager manager = HttpManager.Instance();
+            HttpManager httpManager = HttpManager.Instance();
 
             #region [GET]
 
@@ -22,10 +22,10 @@ namespace ConsoleTest
 
             var resultGet = Task<GetObject>.Run(() =>
             {
-                return manager.Get<GetObject>("https://postman-echo.com/get", par);
+                return httpManager.Get<GetObject>("https://postman-echo.com/get", par);
             });
 
-            GetObject getObject = resultGet.GetAwaiter().GetResult();
+            Reply<GetObject> getObject = resultGet.GetAwaiter().GetResult();
 
             #endregion [GET]
 
@@ -33,14 +33,12 @@ namespace ConsoleTest
 
             var resultPost = Task<PostObject>.Run(() =>
             {
-                return manager.Post<string, PostObject>("https://postman-echo.com/post", "texto de prueba");
+                return httpManager.Post<string, PostObject>("https://postman-echo.com/post", "texto de prueba");
             });
 
-            PostObject postObject = resultPost.GetAwaiter().GetResult();
+            Reply<PostObject> postObject = resultPost.GetAwaiter().GetResult();
 
             #endregion [POST]
-
-
         }
     }
 }
