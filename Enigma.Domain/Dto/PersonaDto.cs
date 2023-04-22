@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Enigma.Domain.Dto;
 
-public class PersonDto
+public class PersonaDto
 {
     //public int? PersonId { get; set; }
     public string FirstName { get; set; } = null!;

@@ -9,11 +9,11 @@ using System.Threading.Tasks;
 
 namespace Enigma.Services;
 
-public interface IPersonService : IService<Person>
+public interface IPersonaService : IService<Persona>
 {
-    Task<IEnumerable<PersonDto>> SelectMultiple();
+    Task<IEnumerable<PersonaDto>> SelectMultiple();
 
-    Task<int> InsertMultiple(IList<Person> list);
+    Task<int> InsertMultiple(IList<Persona> list);
 
-    Task<int> TestTransaction(IList<Person> list);
+    Task<int> TestTransaction(IList<Persona> list);
 }

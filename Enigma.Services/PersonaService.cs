@@ -13,14 +13,14 @@ using System.Threading.Tasks;
 
 namespace Enigma.Services;
 
-public class PersonService : Service<Person>, IPersonService
+public class PersonaService : Service<Persona>, IPersonaService
 {
     IPersonRepository _personRepository;
-    ICrudRepository<Person> _crudPersonRepository;
+    ICrudRepository<Persona> _crudPersonRepository;
     private IMapper _mapper;
     private IDatabase _database;
 
-    public PersonService(IPersonRepository personRepository, IMapper mapper, IDatabase database, ICrudRepository<Person> crudPersonRepository) : base(personRepository)
+    public PersonaService(IPersonRepository personRepository, IMapper mapper, IDatabase database, ICrudRepository<Persona> crudPersonRepository) : base(personRepository)
     {
         _personRepository = personRepository;
         _mapper = mapper;
@@ -28,7 +28,7 @@ public class PersonService : Service<Person>, IPersonService
         _crudPersonRepository = crudPersonRepository;
     }
 
-    public async Task<IEnumerable<PersonDto>> SelectMultiple()
+    public async Task<IEnumerable<PersonaDto>> SelectMultiple()
     {
         try
         {
@@ -38,7 +38,7 @@ public class PersonService : Service<Person>, IPersonService
             //List<Person> lstPerson = result.GetType().GetProperty("res1").GetValue(result, null);
             //List<Country> lstCountry = result.GetType().GetProperty("res2").GetValue(result, null);
 
-            var lst = result.Select(x => _mapper.Map<PersonDto>(x));
+            var lst = result.Select(x => _mapper.Map<PersonaDto>(x));
 
             return lst;
         }
@@ -49,12 +49,12 @@ public class PersonService : Service<Person>, IPersonService
         }
     }
 
-    public async Task<int> InsertMultiple(IList<Person> list)
+    public async Task<int> InsertMultiple(IList<Persona> list)
     {
         return await _personRepository.InsertMultiple(list);
     }
 
-    public async Task<int> TestTransaction(IList<Person> list)
+    public async Task<int> TestTransaction(IList<Persona> list)
     {
         using (IDbTransaction tx = _database.GetConnection().BeginTransaction(IsolationLevel.Serializable))
         {
@@ -62,7 +62,7 @@ public class PersonService : Service<Person>, IPersonService
 
             try
             {
-                Person person3 = await _crudPersonRepository.Select(4, tx);
+                Persona person3 = await _crudPersonRepository.Select(4, tx);
                 person3.FirstName = "4544444";
                 person3 = await _crudPersonRepository.Update(4, person3, tx);
 

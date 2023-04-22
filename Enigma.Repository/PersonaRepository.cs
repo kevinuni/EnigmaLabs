@@ -14,9 +14,9 @@ using System.Threading.Tasks;
 
 namespace Enigma.Repository;
 
-public class PersonRepository : Repository<Person>, IPersonRepository
+public class PersonaRepository : Repository<Persona>, IPersonRepository
 {
-    public PersonRepository(IDatabase database) : base(database)
+    public PersonaRepository(IDatabase database) : base(database)
     {
 
     }
@@ -29,12 +29,12 @@ public class PersonRepository : Repository<Person>, IPersonRepository
         command.CommandType = CommandType.StoredProcedure;
         command.Parameters.Clear();
 
-        List<Person> lstPerson = null;
+        List<Persona> lstPerson = null;
         List<Country> lstCountry = null;
 
         using (var reader = await command.ExecuteReaderAsync())
         {
-            var obj = GetSqlDataAsync<Person>(reader);
+            var obj = GetSqlDataAsync<Persona>(reader);
             lstPerson = await obj.ToListAsync();
 
             if (await reader.NextResultAsync())
@@ -50,7 +50,7 @@ public class PersonRepository : Repository<Person>, IPersonRepository
     }
 
 
-    public async Task<int> InsertMultiple(IList<Person> list, IDbTransaction tx = null)
+    public async Task<int> InsertMultiple(IList<Persona> list, IDbTransaction tx = null)
     {
         const string spName = "dbo.usp_Person_InsertMany";
         const string sqlParameterName = "@lstPerson";

@@ -8,6 +8,6 @@ public class ConfigMapper : Profile
 {
     public ConfigMapper()
     {
-        CreateMap<Person, PersonDto>();
+        CreateMap<Persona, PersonaDto>();
     }
 }

@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 namespace Enigma.Domain.Model;
 
 [BsonCollection("Person")]
-public class Person : Document
+public class Persona : Document
 {
     public int? PersonId { get; set; }
     public string FirstName { get; set; } = null!;

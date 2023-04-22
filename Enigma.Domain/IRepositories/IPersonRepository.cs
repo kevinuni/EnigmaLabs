@@ -4,9 +4,9 @@ using System.Data;
 
 namespace Enigma.Domain.IRepositories;
 
-public interface IPersonRepository : IRepository<Person>
+public interface IPersonRepository : IRepository<Persona>
 {
     Task<dynamic> SelectMultiple(IDbTransaction tx = null);
 
-    Task<int> InsertMultiple(IList<Person> list, IDbTransaction tx = null);
+    Task<int> InsertMultiple(IList<Persona> list, IDbTransaction tx = null);
 }

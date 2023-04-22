@@ -17,14 +17,14 @@ public static class DependencyInjectionExtension
         #region Repository
 
         services.AddScoped(typeof(ICrudRepository<>), typeof(CrudRepository<>));
-        services.AddScoped<IPersonRepository, PersonRepository>();
+        services.AddScoped<IPersonRepository, PersonaRepository>();
 
         #endregion Repository
 
         #region Services
 
         services.AddScoped(typeof(ICrudService<>), typeof(CrudService<>));
-        services.AddScoped<IPersonService, PersonService>();
+        services.AddScoped<IPersonaService, PersonaService>();
 
         #endregion Services
 
