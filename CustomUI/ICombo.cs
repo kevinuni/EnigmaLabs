@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Enigma.ControlsUI
+﻿namespace Enigma.ControlsUI
 {
     public interface ICombo
     {
@@ -10,6 +6,7 @@ namespace Enigma.ControlsUI
         {
             get;
         }
+
         string ValueMember
         {
             get;

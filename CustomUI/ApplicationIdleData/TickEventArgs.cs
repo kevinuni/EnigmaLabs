@@ -11,7 +11,7 @@ namespace Winforms.Components.ApplicationIdleData
 
         private bool _IsWarnPeriod;
 
-        #endregion
+        #endregion Private Members
 
         #region Constructors
 
@@ -24,18 +24,18 @@ namespace Winforms.Components.ApplicationIdleData
             _IsWarnPeriod = isWarnPeriod;
         }
 
-        #endregion
+        #endregion Constructors
 
         #region Properties
 
         /// <summary>
-        /// Gets whether the TimeRemaining is less than or equal to WarnTime. 
+        /// Gets whether the TimeRemaining is less than or equal to WarnTime.
         /// </summary>
         public bool IsWarnPeriod
         {
             get { return _IsWarnPeriod; }
         }
 
-        #endregion
+        #endregion Properties
     }
 }

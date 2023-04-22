@@ -100,7 +100,7 @@ namespace Winforms.Components
         Description("Raised when the WarnSetting has been changed.")]
         public event EventHandler WarnSettingChanged;
 
-        #endregion
+        #endregion Synchronous Events
 
         #region Asynchronous Events
 
@@ -160,7 +160,7 @@ namespace Winforms.Components
         Description("Raised asynchronously on a seperate thread when the component detects an activity that is defined in ActivityMessages.")]
         public event EventHandler<ActivityEventArgs> ActivityAsync;
 
-        #endregion
+        #endregion Asynchronous Events
 
         #region Static Fields
 
@@ -168,9 +168,10 @@ namespace Winforms.Components
         /// A System.TimeSpan with all values zero.
         /// </summary>
         public static readonly TimeSpan ZeroTime = new TimeSpan(0, 0, 0);
+
         private static readonly TimeSpan oneSecond = new TimeSpan(0, 0, 1);
 
-        #endregion
+        #endregion Static Fields
 
         #region Private Members etc
 
@@ -186,9 +187,9 @@ namespace Winforms.Components
         private bool _IsRunning;
         private bool _IsPaused;
 
-        bool warnRecalculated;
+        private bool warnRecalculated;
 
-        #endregion
+        #endregion Private Members etc
 
         #region Constructor
 
@@ -211,7 +212,7 @@ namespace Winforms.Components
             _IsPaused = false;
         }
 
-        #endregion
+        #endregion Constructor
 
         #region Read/Write Properties
 
@@ -368,7 +369,7 @@ namespace Winforms.Components
             }
         }
 
-        #endregion
+        #endregion Read/Write Properties
 
         #region ReadOnly Properties
 
@@ -412,7 +413,7 @@ namespace Winforms.Components
             get { return _IsPaused; }
         }
 
-        #endregion
+        #endregion ReadOnly Properties
 
         #region Private Methods
 
@@ -440,6 +441,7 @@ namespace Winforms.Components
             {
                 case WarnSettings.Off:
                     break;
+
                 case WarnSettings.Once:
                     if (_TimeRemaining == _WarnTime)
                     {
@@ -447,6 +449,7 @@ namespace Winforms.Components
                         OnWarn(EventArgs.Empty);
                     }
                     break;
+
                 default:
                     if (_TimeRemaining <= _WarnTime)
                     {
@@ -471,7 +474,7 @@ namespace Winforms.Components
             return new TimeSpan((long)seconds * TimeSpan.TicksPerSecond);
         }
 
-        #endregion
+        #endregion Private Methods
 
         #region Public Methods
 
@@ -553,7 +556,7 @@ namespace Winforms.Components
             return System.Reflection.Assembly.GetExecutingAssembly().GetName().Version;
         }
 
-        #endregion
+        #endregion Public Methods
 
         #region Event Raising and Asynchronous Callback Methods
 
@@ -831,7 +834,7 @@ namespace Winforms.Components
             subscriber.EndInvoke(asyncResult);
         }
 
-        #endregion
+        #endregion Event Raising and Asynchronous Callback Methods
 
         #region Overridden Methods
 
@@ -850,7 +853,7 @@ namespace Winforms.Components
             base.Dispose(disposing);
         }
 
-        #endregion
+        #endregion Overridden Methods
 
         #region IMessageFilter Members
 
@@ -867,6 +870,6 @@ namespace Winforms.Components
             return false;
         }
 
-        #endregion
+        #endregion IMessageFilter Members
     }
 }

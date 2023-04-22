@@ -173,10 +173,9 @@ namespace Enigma.ControlsUI
                 c.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
                 c.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
                 c.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+
                 #endregion [Metro]
-
             }
-
             else if (theme == ThemeStyle.Perseo)
             {
                 #region [Perseo]
@@ -267,7 +266,6 @@ namespace Enigma.ControlsUI
                 c.Font = columnHeaderCellStyle.Font;
 
                 #endregion [Perseo]
-
             }
         }
 

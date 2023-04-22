@@ -70,9 +70,11 @@ namespace Enigma.Util
             return response.Content.ReadAsStringAsync().GetAwaiter().GetResult();
         }
 
-        public async Task<T> Get<T>(string uri, Dictionary<string, string> queryParams = null, Dictionary<string, string> headers = null)
+        public async Task<T> GenericRequest<W, T>(HttpMethod method, string uri, W objW, Dictionary<string, string> queryParams = null, Dictionary<string, string> headers = null)
         {
-            if (queryParams != null && queryParams.Count > 0) 
+            HttpRequestMessage requestMessage = new HttpRequestMessage(method, uri);
+
+            if (queryParams != null && queryParams.Count > 0)
             {
                 StringBuilder query = new StringBuilder();
                 foreach (var item in queryParams)
@@ -80,12 +82,15 @@ namespace Enigma.Util
                     query.Append($"{item.Key}={item.Value}&");
                 }
 
-                uri = uri + "?" +query.ToString().TrimEnd('&');
-
-                //uri = WebUtility.UrlEncode(uri);
+                uri = uri + "?" + query.ToString().TrimEnd('&');
             }
 
-            HttpRequestMessage requestMessage = new HttpRequestMessage(HttpMethod.Get, uri);
+            if (objW != null) 
+            {
+                string bodyContent = JsonConvert.SerializeObject(objW);
+                requestMessage.Content = new StringContent(bodyContent, Encoding.UTF8, "application/json");
+            }
+
 
             if (headers != null && headers.Count > 0)
             {
@@ -98,7 +103,7 @@ namespace Enigma.Util
             ServicePointManager.ServerCertificateValidationCallback += (sender, cert, chain, sslPolicyErrors) => true;
             HttpResponseMessage response = await httpClient.SendAsync(requestMessage);
             response.EnsureSuccessStatusCode();
-            
+
             if (typeof(T) == typeof(byte[]))
             {
                 byte[] data = await response.Content.ReadAsByteArrayAsync();
@@ -106,70 +111,29 @@ namespace Enigma.Util
             }
             else
             {
-                string json = await response.Content.ReadAsStringAsync();                
-                return JsonConvert.DeserializeObject<T>(json);
-            }
-        }
-
-        public async Task<W> Post<T, W>(string uri, T objT, Dictionary<string, string> headers = null) 
-        {
-            //uri = WebUtility.UrlEncode(uri);
-
-            HttpRequestMessage requestMessage = new HttpRequestMessage(HttpMethod.Post, uri);
-            
-            string bodyContent = JsonConvert.SerializeObject(objT);
-
-            requestMessage.Content = bodyContent != null ? new StringContent(bodyContent, Encoding.UTF8, "application/json") : null;
-
-            if (headers != null && headers.Count > 0)
-            {
-                foreach (var item in headers)
-                {
-                    requestMessage.Headers.Add(item.Key, item.Value);
-                }
-            }
-
-            ServicePointManager.ServerCertificateValidationCallback += (sender, cert, chain, sslPolicyErrors) => true;
-            HttpResponseMessage response = await httpClient.SendAsync(requestMessage);
-            response.EnsureSuccessStatusCode();
-
-            if (typeof(W) == typeof(byte[]))
-            {
-                byte[] data = await response.Content.ReadAsByteArrayAsync();
-                return (W)(object)data;
-            }
-            else
-            {
                 string json = await response.Content.ReadAsStringAsync();
-                return JsonConvert.DeserializeObject<W>(json);
+                return JsonConvert.DeserializeObject<T>(json);                
             }
         }
 
-        //public async Task<T> Put<T>(string uri, T objT, int id)
-        //{
-        //    uri = uri.Trim('/') + "/";
+        public async Task<T> Get<T>(string uri, Dictionary<string, string> queryParams = null, Dictionary<string, string> headers = null)
+        {
+            return await GenericRequest<object, T>(HttpMethod.Get, uri, null, queryParams, headers);
+        }
 
-        //    HttpRequestMessage requestMessage = new HttpRequestMessage(HttpMethod.Put, uri + id.ToString());
-        //    requestMessage.Content = new StringContent(JsonConvert.SerializeObject(objT), Encoding.UTF8, "application/json");
-        //    ServicePointManager.ServerCertificateValidationCallback += (sender, cert, chain, sslPolicyErrors) => true;
-        //    HttpResponseMessage response = await httpClient.SendAsync(requestMessage);
-        //    response.EnsureSuccessStatusCode();
-        //    T model = await response.Content.ReadAsAsync<T>();
+        public async Task<T> Post<W, T>(string uri, W objW, Dictionary<string, string> headers = null) 
+        {
+            return await GenericRequest<W, T>(HttpMethod.Post, uri, objW, null, headers);
+        }
 
-        //    return model;
-        //}
+        public async Task<T> Put<T>(string uri, T objW, Dictionary<string, string> headers = null)
+        {            
+            return await GenericRequest<T, T>(HttpMethod.Put, uri, objW, null, headers);
+        }
 
-        //public async Task<bool> Delete(string uri, int id)
-        //{
-        //    uri = uri.Trim('/') + "/";
-
-        //    HttpRequestMessage requestMessage = new HttpRequestMessage(HttpMethod.Delete, uri + id.ToString());
-        //    ServicePointManager.ServerCertificateValidationCallback += (sender, cert, chain, sslPolicyErrors) => true;
-        //    HttpResponseMessage response = await httpClient.SendAsync(requestMessage);
-        //    response.EnsureSuccessStatusCode();
-        //    var result = await response.Content.ReadAsAsync<bool>();
-
-        //    return result;
-        //}
+        public async Task<int> Delete<T>(string uri, Dictionary<string, string> headers = null)
+        {
+            return await GenericRequest<object, int>(HttpMethod.Delete, uri, null, null, headers);
+        }
     }
 }

@@ -1,9 +1,4 @@
-using System;
 using System.Collections.Generic;
-using System.Text;
-using System.Collections;
-using System.Windows.Forms;
-
 
 namespace Enigma.ControlsUI
 {
@@ -12,7 +7,7 @@ namespace Enigma.ControlsUI
     /// NO es una interfase de la entidad devuelta.
     /// Notar que las clases que implementan IFinder implementan los formularios de búsqueda
     /// </summary>
-    public interface IDriver<T> 
+    public interface IDriver<T>
     {
         /// <summary>
         /// Devuelve entidades que implementan IEntityToSearch por su llave primaria
@@ -28,16 +23,11 @@ namespace Enigma.ControlsUI
         /// <returns></returns>
         List<T> GetByPattern(string pattern);
 
-        
-
         T GetEntityTNinguno
         {
             get;
         }
 
         List<T> GetAll();
-
-
-        
     }
 }

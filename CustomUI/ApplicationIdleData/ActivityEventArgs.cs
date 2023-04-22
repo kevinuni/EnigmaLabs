@@ -11,7 +11,7 @@ namespace Winforms.Components.ApplicationIdleData
 
         private ActivityMessages _Message;
 
-        #endregion
+        #endregion Private Members
 
         #region Constructors
 
@@ -24,18 +24,18 @@ namespace Winforms.Components.ApplicationIdleData
             _Message = message;
         }
 
-        #endregion
+        #endregion Constructors
 
         #region Properties
 
         /// <summary>
-        /// Gets the one of the ActivityMessages that the component used to consider the application not idle. 
+        /// Gets the one of the ActivityMessages that the component used to consider the application not idle.
         /// </summary>
         public ActivityMessages Message
         {
             get { return _Message; }
         }
 
-        #endregion
+        #endregion Properties
     }
 }

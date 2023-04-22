@@ -1,8 +1,8 @@
-﻿using System;
+﻿using Enigma.Util;
+using System;
 using System.Collections;
 using System.Drawing;
 using System.Windows.Forms;
-using Enigma.Util;
 
 namespace Enigma.ControlsUI
 {
@@ -108,7 +108,7 @@ namespace Enigma.ControlsUI
                 Type tipo = TypeMethods.HeuristicallyDetermineType((IEnumerable)bs.DataSource);
                 var property = tipo.GetProperty(newGrid.Columns[e.ColumnIndex].DataPropertyName);
 
-                if (property != null) 
+                if (property != null)
                 {
                     var description = TypeMethods.GetDescriptionFromPropertyInfo(property);
 
@@ -120,7 +120,7 @@ namespace Enigma.ControlsUI
                     {
                         tt.SetToolTip(newGrid, description);
                     }
-                }                
+                }
             }
             //else
             //{

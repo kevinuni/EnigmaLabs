@@ -1,11 +1,11 @@
-﻿using Microsoft.VisualBasic;
+﻿using Enigma.Util;
+using Microsoft.VisualBasic;
 using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Drawing;
 using System.IO;
 using System.Windows.Forms;
-using Enigma.Util;
 
 namespace Enigma.ControlsUI
 {
@@ -234,7 +234,7 @@ namespace Enigma.ControlsUI
                 }
                 FileSystem.PrintLine(1, sb);
             }
-            #endregion[Detalle]
+            #endregion [Export To Excel]
 
             FileSystem.FileClose(1);
             ExportToExcel.TextToExcel(vFileName, path, nameSheet);

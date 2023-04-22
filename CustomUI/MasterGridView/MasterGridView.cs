@@ -1,10 +1,10 @@
-﻿using System;
+﻿using Enigma.Util;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Reflection;
 using System.Windows.Forms;
-using Enigma.Util;
 
 namespace Enigma.ControlsUI
 {
