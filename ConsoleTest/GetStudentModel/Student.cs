@@ -28,23 +28,23 @@ namespace ConsoleTest.GetStudentModel
         {
             List<Student> list = new List<Student>()
             {
-                new Student() { 
-                    Id = 1, 
-                    FirstName = "Morty", 
-                    LastName = "Smith", 
+                new Student() {
+                    Id = 1,
+                    FirstName = "Morty",
+                    LastName = "Smith",
                     lstQualifications = {
                         new Qualifications(1, 10, 15),
                         new Qualifications(2, 12, 20),
                         new Qualifications(3, 5, 23)
-                    }, 
+                    },
                     lstCourses = {
                         new Course() { Subject = "Principal", Teacher = "Gene Vagina", Credits = 10 },
                         new Course() { Subject = "Math", Teacher = "Mr. Goldenfold", Credits = 10 }
                     },
                 },
-                new Student() { 
-                    Id = 1, 
-                    FirstName = "Rick", 
+                new Student() {
+                    Id = 1,
+                    FirstName = "Rick",
                     LastName = "Sanchez",
                     lstQualifications = {
                         new Qualifications(4, 44, 90),
@@ -56,9 +56,9 @@ namespace ConsoleTest.GetStudentModel
                         new Course() { Subject = "Laws", Teacher = "Dr. Jekyll", Credits = 7 }
                     },
                 },
-                new Student() { 
-                    Id = 1, 
-                    FirstName = "John", 
+                new Student() {
+                    Id = 1,
+                    FirstName = "John",
                     LastName = "Doe",
                     lstQualifications = {
                         new Qualifications(7, 37, 94),

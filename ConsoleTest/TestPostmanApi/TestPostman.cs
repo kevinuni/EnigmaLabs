@@ -1,15 +1,12 @@
 ﻿using Enigma.Util;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace ConsoleTest.TestPostmanApi
 {
     internal class TestPostman
     {
-        public static void Run() 
+        public static void Run()
         {
             HttpManager httpManager = HttpManager.Instance();
 

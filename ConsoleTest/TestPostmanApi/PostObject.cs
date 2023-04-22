@@ -1,11 +1,4 @@
-﻿using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace ConsoleTest.TestPostmanApi
+﻿namespace ConsoleTest.TestPostmanApi
 {
     public class PostObject
     {
@@ -17,6 +10,4 @@ namespace ConsoleTest.TestPostmanApi
         public object json { get; set; }
         public string url { get; set; }
     }
-
-
 }

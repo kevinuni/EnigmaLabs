@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-
-namespace ConsoleTest.GetStudentModel
+﻿namespace ConsoleTest.GetStudentModel
 {
     public class Course
     {

@@ -1,9 +1,4 @@
 ﻿using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ConsoleTest.TestPostmanApi
 {
@@ -14,6 +9,7 @@ namespace ConsoleTest.TestPostmanApi
 
         [JsonProperty("x-forwarded-port")]
         public string xforwardedport { get; set; }
+
         public string host { get; set; }
 
         [JsonProperty("x-amzn-trace-id")]
@@ -21,6 +17,7 @@ namespace ConsoleTest.TestPostmanApi
 
         [JsonProperty("user-agent")]
         public string useragent { get; set; }
+
         public string accept { get; set; }
 
         [JsonProperty("postman-token")]
@@ -28,6 +25,7 @@ namespace ConsoleTest.TestPostmanApi
 
         [JsonProperty("accept-encoding")]
         public string acceptencoding { get; set; }
+
         public string cookie { get; set; }
 
         [JsonProperty("content-length")]

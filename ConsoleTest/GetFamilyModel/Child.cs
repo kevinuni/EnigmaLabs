@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace ConsoleTest.GetFamilyModel
+﻿namespace ConsoleTest.GetFamilyModel
 {
     public class Child
     {
@@ -12,6 +6,5 @@ namespace ConsoleTest.GetFamilyModel
         public string Appat { get; set; }
         public string Apmat { get; set; }
         public string Name { get; set; }
-
     }
 }

@@ -1,12 +1,4 @@
-﻿using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace ConsoleTest.TestPostmanApi
+﻿namespace ConsoleTest.TestPostmanApi
 {
     public class GetObject
     {
