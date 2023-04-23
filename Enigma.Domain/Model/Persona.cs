@@ -1,20 +1,15 @@
 ﻿using Enigma.Domain.Base;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Enigma.Domain.Model;
 
-[BsonCollection("Person")]
+[BsonCollection("Persona")]
 public class Persona : Document
 {
-    public int? PersonId { get; set; }
-    public string FirstName { get; set; } = null!;
-    public string LastName { get; set; } = null!;
-    public string DOI { get; set; } = null!;
-    public DateTime? BirthDate { get; set; }
+    public int? PersonaId { get; set; }
+    public string Nombre { get; set; } = null!;
+    public string Apellido { get; set; } = null!;
+    public string DNI { get; set; } = null!;
+    public DateTime? FecNac { get; set; }
     public bool? IsPerNat { get; set; }
     public string RazonSocial { get; set; } = null!;
     public string RUC { get; set; } = null!;

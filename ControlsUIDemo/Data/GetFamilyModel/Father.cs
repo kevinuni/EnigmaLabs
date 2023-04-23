@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 
-namespace ConsoleTest.GetFamilyModel
+namespace ControlsUIDemo.Data
 {
     public class Father
     {

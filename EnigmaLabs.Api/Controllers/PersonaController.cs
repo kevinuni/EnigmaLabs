@@ -14,14 +14,12 @@ public class PersonaController : Controller
     private readonly IPersonaService _personaService;
     private readonly ICrudService<Persona> _crudPersonService;
     private readonly ILogger<PersonaController> _logger;
-    private IMapper _mapper;
 
     public PersonaController(ILogger<PersonaController> logger, IPersonaService personaService, ICrudService<Persona> crudPersonService, IMapper mapper)
     {
         _personaService = personaService;
         _crudPersonService = crudPersonService;
         _logger = logger;
-        _mapper = mapper;
     }
 
 

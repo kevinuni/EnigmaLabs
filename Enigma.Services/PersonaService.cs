@@ -63,7 +63,7 @@ public class PersonaService : Service<Persona>, IPersonaService
             try
             {
                 Persona person3 = await _crudPersonRepository.Select(4, tx);
-                person3.FirstName = "4544444";
+                person3.Nombre = "4544444";
                 person3 = await _crudPersonRepository.Update(4, person3, tx);
 
                 res = await _personRepository.InsertMultiple(list, tx);

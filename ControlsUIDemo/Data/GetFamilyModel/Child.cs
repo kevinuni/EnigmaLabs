@@ -1,4 +1,4 @@
-﻿namespace ConsoleTest.GetFamilyModel
+﻿namespace ControlsUIDemo.Data
 {
     public class Child
     {

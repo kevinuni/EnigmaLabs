@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Enigma.Domain.Base;
+﻿namespace Enigma.Domain.Base;
 
 public interface IRepository<TDocument> where TDocument : IDocument
 {

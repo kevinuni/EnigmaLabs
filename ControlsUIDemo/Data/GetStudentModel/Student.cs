@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel;
 
-namespace ConsoleTest.GetStudentModel
+namespace ControlsUIDemo.Data
 {
     public class Student
     {

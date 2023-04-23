@@ -1,4 +1,4 @@
-﻿namespace ConsoleTest.GetStudentModel
+﻿namespace ControlsUIDemo.Data
 {
     public class Course
     {

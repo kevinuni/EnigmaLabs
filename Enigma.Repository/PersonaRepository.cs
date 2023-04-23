@@ -62,9 +62,9 @@ public class PersonaRepository : Repository<Persona>, IPersonRepository
 
         var dt = list.ToList().Select(x => new
         {
-            x.FirstName,
-            x.LastName,
-            x.DOI,
+            x.Nombre,
+            x.Apellido,
+            x.DNI,
             x.IsPerNat
         }).AsEnumerable();
 

@@ -1,4 +1,4 @@
-﻿using ConsoleTest.GetStudentModel;
+﻿using ControlsUIDemo.Data;
 using Enigma.ControlsUI;
 using System;
 using System.Windows.Forms;
