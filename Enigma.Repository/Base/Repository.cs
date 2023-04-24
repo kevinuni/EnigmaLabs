@@ -19,7 +19,7 @@ public class Repository<TDocument> : IRepository<TDocument> where TDocument : ID
         _database = database;
     }
 
-    protected SqlCommand CreateCommand(string query, IDbTransaction tx = null)
+    protected SqlCommand CreateCommand(string query, IDbTransaction? tx = null)
     {
         if (tx != null)
         {
@@ -37,19 +37,19 @@ public class Repository<TDocument> : IRepository<TDocument> where TDocument : ID
 
         while (await reader.ReadAsync())
         {
-            W element = new W();
+            W obj = new W();
 
             foreach (var prop in properties)
             {
                 try
                 {
-                    var obj = reader[prop.Name];
-                    if (obj.GetType() != typeof(DBNull))
-                        prop.SetValue(element, obj, null);
+                    var value = reader[prop.Name];
+                    if (value.GetType() != typeof(DBNull))
+                        prop.SetValue(obj, value, null);
                 }
                 catch { }
             }
-            yield return element;
+            yield return obj;
         }
     }
 

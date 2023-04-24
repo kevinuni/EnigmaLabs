@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Enigma.Domain.Dto;
 using Enigma.Domain.Model;
 using Enigma.Services;
 using Enigma.Services.Base;
@@ -14,22 +15,42 @@ public class PersonaController : Controller
     private readonly IPersonaService _personaService;
     private readonly ICrudService<Persona> _crudPersonService;
     private readonly ILogger<PersonaController> _logger;
+    private readonly IMapper _mapper;
 
     public PersonaController(ILogger<PersonaController> logger, IPersonaService personaService, ICrudService<Persona> crudPersonService, IMapper mapper)
     {
         _personaService = personaService;
         _crudPersonService = crudPersonService;
-        _logger = logger;
+        _logger = logger;   
+        _mapper = mapper;
     }
 
+    [HttpGet]
+    //[Route("person")]
+    //[ResponseType(typeof(CourseDTO))]
+    public async Task<ActionResult<IEnumerable<PersonaDto>>> Get()
+    {
+        try
+        {
+            var result = await _crudPersonService.Select();
+            
+            var lst = result.Select(x => _mapper.Map<PersonaDto>(x));
+
+            return Ok(lst);
+        }
+        catch (Exception e)
+        {
+            _logger.LogError(e, "Error en el método Get");
+            return NotFound();
+        }
+    }
 
     // GET api/<PersonController>/5
     //[Route("person/{id}")]
     [HttpGet("{id}")]
-    public async Task<ActionResult<IEnumerable<Persona>>> Get(int id)
+    public async Task<ActionResult<PersonaDto>> Get(int id)
     {
         var person = await _crudPersonService.Select(id);
-
         return Ok(person);
     }
 
@@ -37,10 +58,15 @@ public class PersonaController : Controller
     [HttpPut("{id}")]
     public async Task<ActionResult<IEnumerable<Persona>>> Update(int id, [FromBody] Persona person)
     {
-        person.ModifiedDate = DateTime.Now;
-        person.ModifiedBy = "SYSTEM";
-
         var obj = await _crudPersonService.Update(id, person);
+        return Ok(obj);
+    }
+
+    // PUT api/<PersonController>
+    [HttpPut("{id}")]
+    public async Task<ActionResult<IEnumerable<Persona>>> Upsert([FromBody] Persona person)
+    {
+        var obj = await _crudPersonService.Upsert(person);
         return Ok(obj);
     }
 
@@ -50,7 +76,7 @@ public class PersonaController : Controller
     {
         person.CreatedDate = DateTime.Now;
         person.CreatedBy = "SYSTEM";
-
+        //person.Bkey = Guid.NewGuid().ToString().GetHashCode().ToString("x");
         var res = await _crudPersonService.Insert(person);
 
         return Ok(res);
@@ -65,23 +91,7 @@ public class PersonaController : Controller
         return Ok(res);
     }
 
-    [HttpGet]
-    //[Route("person")]
-    //[ResponseType(typeof(CourseDTO))]
-    public async Task<ActionResult<IEnumerable<Persona>>> Get()
-    {
-        try
-        {
-            var result = await _crudPersonService.Select();
-
-            return Ok(result);
-        }
-        catch (Exception e)
-        {
-            _logger.LogError(e, "Error en el método Get");
-            return NotFound();
-        }
-    }
+    
 
     [HttpPost("InsertMultiple")]
     public async Task<ActionResult> InsertMultiple([FromBody] IEnumerable<Persona> list)

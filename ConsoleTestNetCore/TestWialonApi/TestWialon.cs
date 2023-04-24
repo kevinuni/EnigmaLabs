@@ -6,7 +6,7 @@ namespace ConsoleTest.TestWialon
 {
     internal class TestWialon
     {
-        public static void Run()
+        public async void Run()
         {
             HttpManager httpManager = HttpManager.Instance();
             httpManager.InitializeClient("https://nimbus.wialon.com/api/");
@@ -17,12 +17,7 @@ namespace ConsoleTest.TestWialon
             Dictionary<string, string> headers = new Dictionary<string, string>();
             headers.Add("Authorization", "Token 39d40f3eef2d4deb993eefcd4498a5c5");
 
-            var resultGet = Task<string>.Run(() =>
-            {
-                return httpManager.GetAsync<string>("depots", null, headers);
-            });
-
-            Reply<string> getObject = resultGet.GetAwaiter().GetResult();
+            var result = await httpManager.Get<string>("depots", null, headers);
         }
     }
 }

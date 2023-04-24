@@ -15,7 +15,6 @@ builder.Host.ConfigureAppConfiguration((hostingContent, config) =>
 });
 
 var services = builder.Services;
-;
 
 services.AddEndpointsApiExplorer();
 
@@ -68,6 +67,7 @@ app.UseEndpoints(endpoints =>
     {
         endpoints.MapControllers();
         //endpoints.MapControllers().AllowAnonymous();
+        //
     }
     else
     {

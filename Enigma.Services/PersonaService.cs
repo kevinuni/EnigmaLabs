@@ -77,9 +77,4 @@ public class PersonaService : Service<Persona>, IPersonaService
             return res;
         }
     }
-
-    //public async Task<int> TestExecuteScalar()
-    //{
-
-    //}
 }

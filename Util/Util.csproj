@@ -92,6 +92,7 @@
     <Compile Include="DemoClass.cs" />
     <Compile Include="Events\cEventHelper.cs" />
     <Compile Include="FixedSizedQueue.cs" />
+    <Compile Include="HttpManager\CrudWrapper.cs" />
     <Compile Include="HttpManager\HttpManager.cs" />
     <Compile Include="HttpManager\Reply.cs" />
     <Compile Include="LicenseManager\LicenseController.cs" />

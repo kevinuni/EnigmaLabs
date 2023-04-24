@@ -9,9 +9,12 @@ public static class CorsExtension
             options.AddPolicy(name: policyName,
                 policy =>
                 {
-                    policy.WithOrigins("http://metasil.synology.me")
-                            .AllowAnyHeader()
-                            .AllowAnyMethod();
+                    policy
+                        .AllowAnyOrigin()
+                        //.WithOrigins("http://metasil.synology.me")
+                        .AllowAnyHeader()
+                        .AllowAnyMethod();
+                        //.WithExposedHeaders("x-pagination", "x-scoreddata");
                 });
         });
         return services;

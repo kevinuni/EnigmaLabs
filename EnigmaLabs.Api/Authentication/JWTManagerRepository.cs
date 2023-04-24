@@ -32,7 +32,7 @@ public class JWTManagerRepository : IJWTManagerRepository
 
         var tokenDescriptor = new SecurityTokenDescriptor
         {
-            Subject = new System.Security.Claims.ClaimsIdentity(
+            Subject = new ClaimsIdentity(
                 new Claim[] {
                     new Claim(ClaimTypes.Name, user.Name)
                 }

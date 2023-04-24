@@ -73,9 +73,9 @@ namespace Enigma.Util
             return response.Content.ReadAsStringAsync().GetAwaiter().GetResult();
         }
 
-        public async Task<Reply<T>> GenericRequestAsync<W, T>(HttpMethod method, string uri, W objW, Dictionary<string, string> queryParams = null, Dictionary<string, string> headers = null)
+        public async Task<Reply<T>> GenericRequestAsync<T>(HttpMethod method, string uri, object objW, Dictionary<string, string> queryParams = null, Dictionary<string, string> headers = null)
         {
-            uri = uri.TrimStart('/');
+            uri = uri.Trim('/');
 
             Reply<T> reply = new Reply<T>();
             try
@@ -117,7 +117,9 @@ namespace Enigma.Util
 
                     using (HttpContent content = response.Content)
                     {
+                        reply.Response = response;
                         reply.StatusCode = response.StatusCode.ToString();
+                        
                         if (typeof(T) == typeof(byte[]))
                         {
                             byte[] data = await content.ReadAsByteArrayAsync();
@@ -149,24 +151,24 @@ namespace Enigma.Util
             return reply;
         }
 
-        public async Task<Reply<T>> GetAsync<T>(string uri, Dictionary<string, string> queryParams = null, Dictionary<string, string> headers = null)
+        public async Task<Reply<T>> Get<T>(string uri, Dictionary<string, string> queryParams = null, Dictionary<string, string> headers = null)
         {
-            return await GenericRequestAsync<object, T>(HttpMethod.Get, uri, null, queryParams, headers);
+            return await GenericRequestAsync<T>(HttpMethod.Get, uri, null, queryParams, headers);
         }
 
-        public async Task<Reply<T>> PostAsync<W, T>(string uri, W objW, Dictionary<string, string> headers = null)
+        public async Task<Reply<T>> Post<T>(string uri, object objW, Dictionary<string, string> headers = null)
         {
-            return await GenericRequestAsync<W, T>(HttpMethod.Post, uri, objW, null, headers);
+            return await GenericRequestAsync<T>(HttpMethod.Post, uri, objW, null, headers);
         }
 
-        public async Task<Reply<T>> PutAsync<T>(string uri, T objW, Dictionary<string, string> headers = null)
+        public async Task<Reply<T>> PutAsync<T>(string uri, object objW, Dictionary<string, string> headers = null)
         {
-            return await GenericRequestAsync<T, T>(HttpMethod.Put, uri, objW, null, headers);
+            return await GenericRequestAsync<T>(HttpMethod.Put, uri, objW, null, headers);
         }
 
-        public async Task<Reply<T>> DeleteAsync<T>(string uri, Dictionary<string, string> headers = null)
+        public async Task<Reply<int>> DeleteAsync<T>(string uri, Dictionary<string, string> headers = null)
         {
-            return await GenericRequestAsync<object, T>(HttpMethod.Delete, uri, null, null, headers);
+            return await GenericRequestAsync<int>(HttpMethod.Delete, uri, null, null, headers);
         }
     }
 }
