@@ -5,11 +5,11 @@ using System.Data.SqlClient;
 
 namespace Enigma.Repository.Base;
 
-public class Repository<TDocument> : IRepository<TDocument> //where TDocument : /*IDocument,*/ new()
+public abstract class BaseRepository
 {
     protected IDatabase _database;
 
-    protected Repository(IDatabase database)
+    protected BaseRepository(IDatabase database)
     {
         _database = database;
     }

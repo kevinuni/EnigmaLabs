@@ -1,13 +1,8 @@
 ﻿using Enigma.Domain.Base;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Enigma.Services.Base;
 
-public class CrudService<TDocument> : ICrudService<TDocument> //where TDocument : IDocument
+public class CrudService<TDocument> : ICrudService<TDocument>
 {
     private ICrudRepository<TDocument> _repository;
 
@@ -15,6 +10,7 @@ public class CrudService<TDocument> : ICrudService<TDocument> //where TDocument 
     {
         this._repository = repository;
     }
+
     public async Task<IEnumerable<TDocument>> Select()
     {
         return await _repository.Select();
@@ -45,4 +41,3 @@ public class CrudService<TDocument> : ICrudService<TDocument> //where TDocument 
         return await _repository.Delete(id);
     }
 }
-

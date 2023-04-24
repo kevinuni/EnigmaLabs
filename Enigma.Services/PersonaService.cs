@@ -3,24 +3,18 @@ using Enigma.Domain.Base;
 using Enigma.Domain.Dto;
 using Enigma.Domain.IRepositories;
 using Enigma.Domain.Model;
-using Enigma.Services.Base;
-using System;
-using System.Collections.Generic;
 using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Enigma.Services;
 
-public class PersonaService : Service<Persona>, IPersonaService
+public class PersonaService : IPersonaService
 {
-    IPersonRepository _personRepository;
-    ICrudRepository<Persona> _crudPersonRepository;
+    private IPersonaRepository _personRepository;
+    private ICrudRepository<Persona> _crudPersonRepository;
     private IMapper _mapper;
     private IDatabase _database;
 
-    public PersonaService(IPersonRepository personRepository, IMapper mapper, IDatabase database, ICrudRepository<Persona> crudPersonRepository) : base(personRepository)
+    public PersonaService(IPersonaRepository personRepository, IMapper mapper, IDatabase database, ICrudRepository<Persona> crudPersonRepository)
     {
         _personRepository = personRepository;
         _mapper = mapper;

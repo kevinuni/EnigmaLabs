@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Enigma.Services;
 
-public interface IPersonaService : IService<Persona>
+public interface IPersonaService
 {
     Task<IEnumerable<PersonaDto>> SelectMultiple();
 

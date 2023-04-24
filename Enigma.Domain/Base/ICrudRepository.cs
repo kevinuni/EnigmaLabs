@@ -2,7 +2,7 @@
 
 namespace Enigma.Domain.Base;
 
-public interface ICrudRepository<TDocument> //where TDocument : IDocument
+public interface ICrudRepository<TDocument>
 {
     Task<IEnumerable<TDocument>> Select(IDbTransaction? tx = null);
     Task<TDocument> Select(int entityId, IDbTransaction? tx = null);

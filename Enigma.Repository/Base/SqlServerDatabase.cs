@@ -1,12 +1,7 @@
 ﻿using Enigma.Domain.Base;
 using Microsoft.Extensions.Options;
-using System;
-using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Enigma.Repository.Base;
 
@@ -25,5 +20,4 @@ public class SqlServerDatabase : IDatabase
         conn.Open();
         return conn;
     }
-
 }

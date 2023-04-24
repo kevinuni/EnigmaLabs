@@ -3,22 +3,15 @@ using Enigma.Domain.IRepositories;
 using Enigma.Domain.Model;
 using Enigma.Repository.Base;
 using Enigma.Util;
-using System;
-using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
-using System.Diagnostics.Metrics;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Enigma.Repository;
 
-public class PersonaRepository : Repository<Persona>, IPersonRepository
+public class PersonaRepository : BaseRepository, IPersonaRepository
 {
     public PersonaRepository(IDatabase database) : base(database)
     {
-
     }
 
     public async Task<dynamic> SelectMultiple(IDbTransaction tx = null)
@@ -49,7 +42,6 @@ public class PersonaRepository : Repository<Persona>, IPersonRepository
         return result;
     }
 
-
     public async Task<int> InsertMultiple(IList<Persona> list, IDbTransaction tx = null)
     {
         const string spName = "dbo.usp_Person_InsertMany";
@@ -67,7 +59,6 @@ public class PersonaRepository : Repository<Persona>, IPersonRepository
             x.DNI,
             x.IsPerNat
         }).AsEnumerable();
-
 
         var par = new SqlParameter(sqlParameterName, SqlDbType.Structured);
         par.Value = CollectionManager.ToDataTable(dt);

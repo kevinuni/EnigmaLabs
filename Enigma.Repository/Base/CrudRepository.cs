@@ -4,7 +4,7 @@ using System.Data.SqlClient;
 
 namespace Enigma.Repository.Base;
 
-public class CrudRepository<TDocument> : Repository<TDocument>, ICrudRepository<TDocument> where TDocument : /*IDocument, */new()
+public class CrudRepository<TDocument> : BaseRepository, ICrudRepository<TDocument> where TDocument : new()
 {
     public CrudRepository(IDatabase database) : base(database)
     {

@@ -17,7 +17,7 @@ public static class DependencyInjectionExtension
         #region Repository
 
         services.AddScoped(typeof(ICrudRepository<>), typeof(CrudRepository<>));
-        services.AddScoped<IPersonRepository, PersonaRepository>();
+        //services.AddScoped<IPersonRepository, PersonaRepository>();
 
         #endregion Repository
 

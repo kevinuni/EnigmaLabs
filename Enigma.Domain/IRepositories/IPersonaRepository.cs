@@ -1,10 +1,9 @@
-﻿using Enigma.Domain.Base;
-using Enigma.Domain.Model;
+﻿using Enigma.Domain.Model;
 using System.Data;
 
 namespace Enigma.Domain.IRepositories;
 
-public interface IPersonRepository : IRepository<Persona>
+public interface IPersonaRepository
 {
     Task<dynamic> SelectMultiple(IDbTransaction tx = null);
 

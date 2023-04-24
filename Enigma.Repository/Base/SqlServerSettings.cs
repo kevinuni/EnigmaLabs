@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Enigma.Repository.Base;
+﻿namespace Enigma.Repository.Base;
 
 public class SqlServerSettings
 {
