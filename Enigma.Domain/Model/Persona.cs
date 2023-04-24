@@ -3,7 +3,7 @@
 namespace Enigma.Domain.Model;
 
 [BsonCollection("Persona")]
-public class Persona : Document
+public class Persona //: Document
 {
     public int? PersonaId { get; set; }
     public string Nombre { get; set; } = null!;

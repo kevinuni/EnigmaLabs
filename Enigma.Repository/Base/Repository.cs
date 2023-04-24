@@ -1,16 +1,11 @@
 ﻿using Enigma.Domain.Base;
-using System;
-using System.Collections.Generic;
-using System.Data.Common;
 using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Data.Common;
 using System.Data.SqlClient;
 
 namespace Enigma.Repository.Base;
 
-public class Repository<TDocument> : IRepository<TDocument> where TDocument : IDocument, new()
+public class Repository<TDocument> : IRepository<TDocument> //where TDocument : /*IDocument,*/ new()
 {
     protected IDatabase _database;
 
@@ -53,7 +48,7 @@ public class Repository<TDocument> : IRepository<TDocument> where TDocument : ID
         }
     }
 
-    private protected string GetCollectionName(Type documentType)
+    protected string GetCollectionName(Type documentType)
     {
         return ((BsonCollectionAttribute)documentType.GetCustomAttributes(typeof(BsonCollectionAttribute), true).FirstOrDefault()).CollectionName;
     }

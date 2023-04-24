@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Enigma.Services.Base;
 
-public class CrudService<TDocument> : ICrudService<TDocument> where TDocument : IDocument
+public class CrudService<TDocument> : ICrudService<TDocument> //where TDocument : IDocument
 {
     private ICrudRepository<TDocument> _repository;
 

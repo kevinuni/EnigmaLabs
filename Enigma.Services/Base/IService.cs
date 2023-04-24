@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Enigma.Services.Base;
 
-public interface IService<TDocument> where TDocument : IDocument
+public interface IService<TDocument> //where TDocument : IDocument
 {
 
 

@@ -11,7 +11,7 @@ public static class DependencyInjectionExtension
 {
     public static IServiceCollection ConfigureDependencyInjection(this IServiceCollection services)
     {
-        services.AddScoped<IDocument, Document>();
+        //services.AddScoped<IDocument, Document>();
         services.AddScoped<IHangfireService, HangfireService>();
 
         #region Repository

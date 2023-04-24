@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Enigma.Services.Base;
 
-public interface ICrudService<TDocument> where TDocument : IDocument
+public interface ICrudService<TDocument> //where TDocument : IDocument
 {
     Task<IEnumerable<TDocument>> Select();
     

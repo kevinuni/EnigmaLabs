@@ -1,5 +1,5 @@
 ﻿namespace Enigma.Domain.Base;
 
-public interface IRepository<TDocument> where TDocument : IDocument
+public interface IRepository<TDocument> //where TDocument : IDocument
 {
 }

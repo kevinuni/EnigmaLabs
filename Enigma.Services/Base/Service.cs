@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Enigma.Services.Base;
 
-public class Service<TDocument> : IService<TDocument> where TDocument : IDocument
+public class Service<TDocument> : IService<TDocument> //where TDocument : IDocument
 {
     private IRepository<TDocument> _repository;
 

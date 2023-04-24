@@ -1,14 +1,10 @@
 ﻿using Enigma.Domain.Base;
-using System;
-using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
 namespace Enigma.Repository.Base;
 
-public class CrudRepository<TDocument> : Repository<TDocument>, ICrudRepository<TDocument> where TDocument : IDocument, new()
+public class CrudRepository<TDocument> : Repository<TDocument>, ICrudRepository<TDocument> where TDocument : /*IDocument, */new()
 {
     public CrudRepository(IDatabase database) : base(database)
     {
@@ -19,7 +15,7 @@ public class CrudRepository<TDocument> : Repository<TDocument>, ICrudRepository<
         return await Query(null, tx);
     }
 
-    public async Task<TDocument> Select(int entityId, IDbTransaction? tx = null) 
+    public async Task<TDocument> Select(int entityId, IDbTransaction? tx = null)
     {
         var res = await Query(entityId, tx);
         return res.FirstOrDefault();

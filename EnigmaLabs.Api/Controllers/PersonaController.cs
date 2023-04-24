@@ -74,8 +74,8 @@ public class PersonaController : Controller
     [HttpPost]
     public async Task<ActionResult<IEnumerable<Persona>>> Insert([FromBody] Persona person)
     {
-        person.CreatedDate = DateTime.Now;
-        person.CreatedBy = "SYSTEM";
+        //person.CreatedDate = DateTime.Now;
+        //person.CreatedBy = "SYSTEM";
         //person.Bkey = Guid.NewGuid().ToString().GetHashCode().ToString("x");
         var res = await _crudPersonService.Insert(person);
 
