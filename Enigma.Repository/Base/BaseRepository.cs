@@ -39,10 +39,27 @@ public abstract class BaseRepository
                 try
                 {
                     var value = reader[prop.Name];
-                    if (value.GetType() != typeof(DBNull))
+                    if (value.GetType() == typeof(DBNull))
+                    {
+
+                    }
+                    else if (value.GetType().IsAssignableTo(prop.PropertyType))
+                    {
                         prop.SetValue(obj, value, null);
+                    }
+                    else if (value.GetType().IsGenericType)
+                    {
+                        //do nothing
+                    }
+                    else
+                    {
+                        Console.WriteLine();
+                    }
                 }
-                catch { }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                }
             }
             yield return obj;
         }

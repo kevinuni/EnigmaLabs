@@ -29,8 +29,7 @@ public class PersonaService : IPersonaService
             var result = await _crudPersonRepository.Select();
             //var result = await _personRepository.SelectMultiple().ConfigureAwait(false);
 
-            //List<Person> lstPerson = result.GetType().GetProperty("res1").GetValue(result, null);
-            //List<Country> lstCountry = result.GetType().GetProperty("res2").GetValue(result, null);
+            
 
             var lst = result.Select(x => _mapper.Map<PersonaDto>(x));
 
