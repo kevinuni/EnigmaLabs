@@ -2,7 +2,6 @@
 using Enigma.Domain.Dto;
 using Enigma.Domain.Model;
 using Enigma.Services;
-using Enigma.Services.Base;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -13,14 +12,12 @@ namespace Enigma.Api.Controllers;
 public class PersonaController : Controller
 {
     private readonly IPersonaService _personaService;
-    private readonly ICrudService<Persona> _crudPersonService;
     private readonly ILogger<PersonaController> _logger;
     private readonly IMapper _mapper;
 
-    public PersonaController(ILogger<PersonaController> logger, IPersonaService personaService, ICrudService<Persona> crudPersonService, IMapper mapper)
+    public PersonaController(ILogger<PersonaController> logger, IPersonaService personaService, IMapper mapper)
     {
         _personaService = personaService;
-        _crudPersonService = crudPersonService;
         _logger = logger;   
         _mapper = mapper;
     }
@@ -32,7 +29,7 @@ public class PersonaController : Controller
     {
         try
         {
-            var result = await _crudPersonService.Select();
+            var result = await _personaService.Select();
             
             var lst = result.Select(x => _mapper.Map<PersonaDto>(x));
 
@@ -50,7 +47,7 @@ public class PersonaController : Controller
     [HttpGet("{id}")]
     public async Task<ActionResult<PersonaDto>> Get(int id)
     {
-        var person = await _crudPersonService.Select(id);
+        var person = await _personaService.Select(id);
         return Ok(person);
     }
 
@@ -58,7 +55,7 @@ public class PersonaController : Controller
     [HttpPut("{id}")]
     public async Task<ActionResult<IEnumerable<Persona>>> Update(int id, [FromBody] Persona person)
     {
-        var obj = await _crudPersonService.Update(id, person);
+        var obj = await _personaService.Update(id, person);
         return Ok(obj);
     }
 
@@ -66,7 +63,7 @@ public class PersonaController : Controller
     [HttpPut("{id}")]
     public async Task<ActionResult<IEnumerable<Persona>>> Upsert([FromBody] Persona person)
     {
-        var obj = await _crudPersonService.Upsert(person);
+        var obj = await _personaService.Upsert(person);
         return Ok(obj);
     }
 
@@ -77,7 +74,7 @@ public class PersonaController : Controller
         //person.CreatedDate = DateTime.Now;
         //person.CreatedBy = "SYSTEM";
         //person.Bkey = Guid.NewGuid().ToString().GetHashCode().ToString("x");
-        var res = await _crudPersonService.Insert(person);
+        var res = await _personaService.Insert(person);
 
         return Ok(res);
     }
@@ -86,7 +83,7 @@ public class PersonaController : Controller
     [HttpDelete("{id}")]
     public async Task<ActionResult<bool>> Delete(int id)
     {
-        var res = await _crudPersonService.Delete(id);
+        var res = await _personaService.Delete(id);
 
         return Ok(res);
     }

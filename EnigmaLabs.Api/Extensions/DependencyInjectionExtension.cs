@@ -2,7 +2,6 @@
 using Enigma.Domain.IRepositories;
 using Enigma.Repository.Base;
 using Enigma.Repository;
-using Enigma.Services.Base;
 using Enigma.Services;
 
 namespace Enigma.Api.Extensions;
@@ -23,7 +22,7 @@ public static class DependencyInjectionExtension
 
         #region Services
 
-        services.AddScoped(typeof(ICrudService<>), typeof(CrudService<>));
+        //services.AddScoped(typeof(ICrudService<>), typeof(CrudService<>));
         services.AddScoped<IPersonaService, PersonaService>();
 
         #endregion Services

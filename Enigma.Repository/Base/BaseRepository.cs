@@ -14,7 +14,7 @@ public abstract class BaseRepository
         _database = database;
     }
 
-    protected SqlCommand CreateCommand(string query, IDbTransaction? tx = null)
+    protected SqlCommand CreateCommand(string query, IDbTransaction tx = null)
     {
         if (tx != null)
         {
@@ -55,6 +55,7 @@ public abstract class BaseRepository
                     {
                         Console.WriteLine();
                     }
+
                 }
                 catch (Exception ex)
                 {
@@ -68,5 +69,59 @@ public abstract class BaseRepository
     protected string GetCollectionName(Type documentType)
     {
         return ((BsonCollectionAttribute)documentType.GetCustomAttributes(typeof(BsonCollectionAttribute), true).FirstOrDefault()).CollectionName;
+    }
+
+    public async Task<IList<T>> QueryAsync<T>(string spName, object param = null, IDbTransaction tx = null) where T : new()
+    {
+        var command = CreateCommand(spName, tx);
+        command.CommandType = CommandType.StoredProcedure;
+        command.Parameters.Clear();
+
+        Type type = param.GetType();
+        foreach (var property in type.GetProperties())
+        {
+            command.Parameters.AddWithValue("@" + property.Name, property.GetValue(param));
+        }
+
+        using (var reader = await command.ExecuteReaderAsync())
+        {
+            var obj = GetSqlDataAsync<T>(reader);
+            return await obj.ToListAsync();
+        }
+    }
+
+    public async Task<(IList<T>, IList<W>)> QueryAsync<T, W>(string spName, object param = null, IDbTransaction tx = null) where T : new() where W : new()
+    {
+        try
+        {
+            var command = CreateCommand(spName, tx);
+            command.CommandType = CommandType.StoredProcedure;
+            command.Parameters.Clear();
+
+            Type type = param.GetType();
+            foreach (var property in type.GetProperties())
+            {
+                command.Parameters.AddWithValue("@" + property.Name, property.GetValue(param));
+            }
+
+            using (var reader = await command.ExecuteReaderAsync())
+            {
+                var objT = GetSqlDataAsync<T>(reader);
+                IList<T> listOfT = await objT.ToListAsync();
+
+                if (await reader.NextResultAsync())
+                {
+                    var objW = GetSqlDataAsync<W>(reader);
+                    IList<W> listOfW = await objW.ToListAsync();
+                    return (listOfT, listOfW);
+                }
+                return (listOfT, null);
+            }
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine(ex.ToString());
+        }
+        return new(null, null);
     }
 }

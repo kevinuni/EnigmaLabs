@@ -10,18 +10,18 @@ public class CrudRepository<TDocument> : BaseRepository, ICrudRepository<TDocume
     {
     }
 
-    public async Task<IEnumerable<TDocument>> Select(IDbTransaction? tx = null)
+    public async Task<IEnumerable<TDocument>> Select(IDbTransaction tx = null)
     {
         return await Query(null, tx);
     }
 
-    public async Task<TDocument> Select(int entityId, IDbTransaction? tx = null)
+    public async Task<TDocument> Select(int entityId, IDbTransaction tx = null)
     {
         var res = await Query(entityId, tx);
         return res.FirstOrDefault();
     }
 
-    private async Task<IEnumerable<TDocument>> Query(int? entityId = null, IDbTransaction? tx = null)
+    private async Task<IEnumerable<TDocument>> Query(int? entityId = null, IDbTransaction tx = null)
     {
         string entityName = GetCollectionName(typeof(TDocument));
         string spName = "usp_" + entityName + "_Select";
@@ -41,7 +41,7 @@ public class CrudRepository<TDocument> : BaseRepository, ICrudRepository<TDocume
         }
     }
 
-    public async Task<TDocument> Insert(TDocument entity, IDbTransaction? tx = null)
+    public async Task<TDocument> Insert(TDocument entity, IDbTransaction tx = null)
     {
         string entityName = GetCollectionName(typeof(TDocument));
         string spName = "usp_" + entityName + "_Insert";
@@ -62,7 +62,7 @@ public class CrudRepository<TDocument> : BaseRepository, ICrudRepository<TDocume
         }
     }
 
-    public async Task<TDocument> Update(int id, TDocument entity, IDbTransaction? tx = null)
+    public async Task<TDocument> Update(int id, TDocument entity, IDbTransaction tx = null)
     {
         string entityName = GetCollectionName(typeof(TDocument));
         string spName = "usp_" + entityName + "_Update";
@@ -89,7 +89,7 @@ public class CrudRepository<TDocument> : BaseRepository, ICrudRepository<TDocume
         }
     }
 
-    public async Task<TDocument> Upsert(TDocument entity, IDbTransaction? tx = null)
+    public async Task<TDocument> Upsert(TDocument entity, IDbTransaction tx = null)
     {
         string entityName = GetCollectionName(typeof(TDocument));
         string spName = "usp_" + entityName + "_UI";
@@ -110,7 +110,7 @@ public class CrudRepository<TDocument> : BaseRepository, ICrudRepository<TDocume
         }
     }
 
-    public async Task<int> Delete(int? entityId, IDbTransaction? tx = null)
+    public async Task<int> Delete(int? entityId, IDbTransaction tx = null)
     {
         string entityName = GetCollectionName(typeof(TDocument));
         string spName = "usp_" + entityName + "_Delete";

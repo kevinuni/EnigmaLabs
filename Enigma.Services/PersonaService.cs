@@ -16,11 +16,45 @@ public class PersonaService : IPersonaService
 
     public PersonaService(IPersonaRepository personRepository, IMapper mapper, IDatabase database, ICrudRepository<Persona> crudPersonRepository)
     {
+        _crudPersonRepository = crudPersonRepository;
         _personRepository = personRepository;
         _mapper = mapper;
-        _database = database;
-        _crudPersonRepository = crudPersonRepository;
+        _database = database;        
     }
+
+    public async Task<IEnumerable<Persona>> Select()
+    {
+        return await _crudPersonRepository.Select();
+    }
+
+    public async Task<Persona> Select(int id)
+    {
+        return await _crudPersonRepository.Select(id);
+    }
+
+    public async Task<Persona> Insert(Persona document)
+    {
+        return await _crudPersonRepository.Insert(document);
+    }
+
+    public async Task<Persona> Update(int id, Persona document)
+    {
+        return await _crudPersonRepository.Update(id, document);
+    }
+
+    public async Task<Persona> Upsert(Persona document)
+    {
+        return await _crudPersonRepository.Upsert(document);
+    }
+
+    public async Task<int> Delete(int id)
+    {
+        return await _crudPersonRepository.Delete(id);
+    }
+
+
+
+    
 
     public async Task<IEnumerable<PersonaDto>> SelectMultiple()
     {
