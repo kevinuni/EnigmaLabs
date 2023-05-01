@@ -11,7 +11,7 @@ public class Father
     public string Name { get; set; }
     public List<Child> Childrens { get; set; }
 
-    public IEnumerable<dynamic> GetList()
+    public IList<dynamic> GetList()
     {
         Child child1 = new Child() { ChildId = 1, Appat = "AAA", Apmat = "AAA", Name = "AAA" };
         Child child2 = new Child() { ChildId = 2, Appat = "BBB", Apmat = "BBB", Name = "BBB" };

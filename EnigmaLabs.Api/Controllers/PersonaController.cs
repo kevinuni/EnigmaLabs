@@ -25,7 +25,7 @@ public class PersonaController : Controller
     //[HttpGet]
     ////[Route("person")]
     ////[ResponseType(typeof(CourseDTO))]
-    //public async Task<ActionResult<IEnumerable<PersonaDto>>> Get()
+    //public async Task<ActionResult<IList<PersonaDto>>> Get()
     //{
     //    try
     //    {
@@ -53,7 +53,7 @@ public class PersonaController : Controller
 
     //// PUT api/<PersonController>
     //[HttpPut("{id}")]
-    //public async Task<ActionResult<IEnumerable<Persona>>> Update(int id, [FromBody] Persona person)
+    //public async Task<ActionResult<IList<Persona>>> Update(int id, [FromBody] Persona person)
     //{
     //    var obj = await _personaService.Update(id, person);
     //    return Ok(obj);
@@ -61,7 +61,7 @@ public class PersonaController : Controller
 
     //// PUT api/<PersonController>
     //[HttpPut("{id}")]
-    //public async Task<ActionResult<IEnumerable<Persona>>> Upsert([FromBody] Persona person)
+    //public async Task<ActionResult<IList<Persona>>> Upsert([FromBody] Persona person)
     //{
     //    var obj = await _personaService.Upsert(person);
     //    return Ok(obj);
@@ -69,7 +69,7 @@ public class PersonaController : Controller
 
 
     //[HttpPost]
-    //public async Task<ActionResult<IEnumerable<Persona>>> Insert([FromBody] Persona person)
+    //public async Task<ActionResult<IList<Persona>>> Insert([FromBody] Persona person)
     //{
     //    //person.Bkey = Guid.NewGuid().ToString().GetHashCode().ToString("x");
     //    var res = await _personaService.Insert(person);
@@ -89,14 +89,14 @@ public class PersonaController : Controller
     
 
     [HttpPost("InsertMultiple")]
-    public async Task<ActionResult> InsertMultiple([FromBody] IEnumerable<Persona> list)
+    public async Task<ActionResult> InsertMultiple([FromBody] IList<Persona> list)
     {
         var res = await _personaService.InsertMultiple(list.ToList());
         return Ok();
     }
 
     [HttpPost("TestTransaction")]
-    public async Task<ActionResult> TestTransaction([FromBody] IEnumerable<Persona> list)
+    public async Task<ActionResult> TestTransaction([FromBody] IList<Persona> list)
     {
         var res = await _personaService.TestTransaction(list.ToList());
 

@@ -76,7 +76,7 @@ public abstract class BaseRepository
         return ((BsonCollectionAttribute)documentType.GetCustomAttributes(typeof(BsonCollectionAttribute), true).FirstOrDefault()).Schema;
     }
 
-    public async Task<IList<T>> QueryAsync<T>(string spName, object param = null, IDbTransaction tx = null) where T : new()
+    public async Task<IList<T>> ExecuteQueryAsync<T>(string spName, object param = null, IDbTransaction tx = null) where T : new()
     {
         var command = CreateCommand(spName, tx);
         command.CommandType = CommandType.StoredProcedure;
@@ -98,7 +98,7 @@ public abstract class BaseRepository
         }
     }
 
-    public async Task<(IList<T>, IList<W>)> QueryAsync<T, W>(string spName, object param = null, IDbTransaction tx = null) where T : new() where W : new()
+    public async Task<(IList<T>, IList<W>)> ExecuteQueryAsync<T, W>(string spName, object param = null, IDbTransaction tx = null) where T : new() where W : new()
     {
         try
         {
@@ -134,5 +134,23 @@ public abstract class BaseRepository
             Console.WriteLine(ex.ToString());
         }
         return new(null, null);
+    }
+
+    public async Task<int> ExecuteNonQueryAsync<T>(string spName, object param = null, IDbTransaction tx = null) where T : new()
+    {
+        var command = CreateCommand(spName, tx);
+        command.CommandType = CommandType.StoredProcedure;
+        command.Parameters.Clear();
+
+        if (param != null)
+        {
+            Type type = param.GetType();
+            foreach (var property in type.GetProperties())
+            {
+                command.Parameters.AddWithValue("@" + property.Name, property.GetValue(param));
+            }
+        }
+
+        return await command.ExecuteNonQueryAsync();
     }
 }

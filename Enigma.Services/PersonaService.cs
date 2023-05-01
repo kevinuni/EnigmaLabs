@@ -22,7 +22,7 @@ public class PersonaService : IPersonaService
         _database = database;        
     }
 
-    public async Task<IEnumerable<Persona>> Select()
+    public async Task<IList<Persona>> Select()
     {
         return await _crudPersonRepository.Select();
     }
@@ -56,7 +56,7 @@ public class PersonaService : IPersonaService
 
     
 
-    public async Task<IEnumerable<PersonaDto>> SelectMultiple()
+    public async Task<IList<PersonaDto>> SelectMultiple()
     {
         try
         {
@@ -67,7 +67,7 @@ public class PersonaService : IPersonaService
 
             var lst = result.Select(x => _mapper.Map<PersonaDto>(x));
 
-            return lst;
+            return lst.ToList();
         }
         catch (Exception ex)
         {

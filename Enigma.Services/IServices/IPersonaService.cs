@@ -10,7 +10,7 @@ namespace Enigma.Services;
 
 public interface IPersonaService
 {
-    Task<IEnumerable<Persona>> Select();
+    Task<IList<Persona>> Select();
 
     Task<Persona> Select(int id);
 
@@ -24,7 +24,7 @@ public interface IPersonaService
 
 
 
-    Task<IEnumerable<PersonaDto>> SelectMultiple();
+    Task<IList<PersonaDto>> SelectMultiple();
 
     Task<int> InsertMultiple(IList<Persona> list);
 
