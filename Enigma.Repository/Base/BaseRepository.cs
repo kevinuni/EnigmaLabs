@@ -136,7 +136,7 @@ public abstract class BaseRepository
         return new(null, null);
     }
 
-    public async Task<int> ExecuteNonQueryAsync<T>(string spName, object param = null, IDbTransaction tx = null) where T : new()
+    public async Task<int> ExecuteNonQueryAsync(string spName, object param = null, IDbTransaction tx = null)
     {
         var command = CreateCommand(spName, tx);
         command.CommandType = CommandType.StoredProcedure;
@@ -152,5 +152,23 @@ public abstract class BaseRepository
         }
 
         return await command.ExecuteNonQueryAsync();
+    }
+
+    public async Task<object> ExecuteScalarAsync(string spName, object param = null, IDbTransaction tx = null)
+    {
+        var command = CreateCommand(spName, tx);
+        command.CommandType = CommandType.StoredProcedure;
+        command.Parameters.Clear();
+
+        if (param != null)
+        {
+            Type type = param.GetType();
+            foreach (var property in type.GetProperties())
+            {
+                command.Parameters.AddWithValue("@" + property.Name, property.GetValue(param));
+            }
+        }
+
+        return await command.ExecuteScalarAsync();
     }
 }
