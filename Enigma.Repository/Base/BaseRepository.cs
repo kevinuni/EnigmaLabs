@@ -66,12 +66,12 @@ public abstract class BaseRepository
         }
     }
 
-    protected string GetTableName(Type documentType)
+    protected static string GetTableName(Type documentType)
     {
         return ((BsonCollectionAttribute)documentType.GetCustomAttributes(typeof(BsonCollectionAttribute), true).FirstOrDefault()).TableName;
     }
 
-    protected string GetSchema(Type documentType)
+    protected static string GetSchema(Type documentType)
     {
         return ((BsonCollectionAttribute)documentType.GetCustomAttributes(typeof(BsonCollectionAttribute), true).FirstOrDefault()).Schema;
     }
@@ -82,10 +82,13 @@ public abstract class BaseRepository
         command.CommandType = CommandType.StoredProcedure;
         command.Parameters.Clear();
 
-        Type type = param.GetType();
-        foreach (var property in type.GetProperties())
+        if (param != null) 
         {
-            command.Parameters.AddWithValue("@" + property.Name, property.GetValue(param));
+            Type type = param.GetType();
+            foreach (var property in type.GetProperties())
+            {
+                command.Parameters.AddWithValue("@" + property.Name, property.GetValue(param));
+            }
         }
 
         using (var reader = await command.ExecuteReaderAsync())
@@ -103,10 +106,13 @@ public abstract class BaseRepository
             command.CommandType = CommandType.StoredProcedure;
             command.Parameters.Clear();
 
-            Type type = param.GetType();
-            foreach (var property in type.GetProperties())
+            if (param != null) 
             {
-                command.Parameters.AddWithValue("@" + property.Name, property.GetValue(param));
+                Type type = param.GetType();
+                foreach (var property in type.GetProperties())
+                {
+                    command.Parameters.AddWithValue("@" + property.Name, property.GetValue(param));
+                }
             }
 
             using (var reader = await command.ExecuteReaderAsync())

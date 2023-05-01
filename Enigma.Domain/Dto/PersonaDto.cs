@@ -2,11 +2,11 @@
 
 public class PersonaDto
 {
-    public string Bkey { get; set; } = null!;
+    public string Bkey { get; set; }
 
     //public int? PersonId { get; set; }
-    public string Nombre { get; set; } = null!;
+    public string Nombre { get; set; }
 
-    public string Apellido { get; set; } = null!;
-    public string DNI { get; set; } = null!;
+    public string Apellido { get; set; }
+    public string DNI { get; set; }
 }

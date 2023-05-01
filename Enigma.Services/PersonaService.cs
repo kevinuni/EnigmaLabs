@@ -69,8 +69,9 @@ public class PersonaService : IPersonaService
 
             return lst;
         }
-        catch (Exception e)
+        catch (Exception ex)
         {
+            Console.WriteLine(ex.Message);
             //_logger.LogError(e, "Error en el método Get");
             return null;
         }
@@ -100,6 +101,7 @@ public class PersonaService : IPersonaService
             catch (Exception ex)
             {
                 tx.Rollback();
+                Console.WriteLine(ex.Message);
             }
             return res;
         }

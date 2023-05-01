@@ -12,10 +12,10 @@ namespace ConsoleTest.TestPostmanApi
 
         public string host { get; set; }
 
-        [JsonProperty("x-amzn-trace-id")]
+        [JsonProperty("x-amzn-trace-id")] 
         public string xamzntraceid { get; set; }
 
-        [JsonProperty("user-agent")]
+        [JsonProperty("user-agent")] 
         public string useragent { get; set; }
 
         public string accept { get; set; }

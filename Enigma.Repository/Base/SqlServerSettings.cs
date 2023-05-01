@@ -2,5 +2,5 @@
 
 public class SqlServerSettings
 {
-    public string ConnectionString { get; set; } = null!;
+    public string ConnectionString { get; set; }
 }
