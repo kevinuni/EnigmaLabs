@@ -10,7 +10,7 @@ public class CrudRepository<TDocument> : BaseRepository, ICrudRepository<TDocume
     {
     }
 
-    public async Task<IEnumerable<TDocument>> Select(IDbTransaction tx = null)
+    public async Task<IList<TDocument>> Select(IDbTransaction tx = null)
     {
         return await Query(null, tx);
     }
@@ -21,10 +21,11 @@ public class CrudRepository<TDocument> : BaseRepository, ICrudRepository<TDocume
         return res.FirstOrDefault();
     }
 
-    private async Task<IEnumerable<TDocument>> Query(int? entityId = null, IDbTransaction tx = null)
+    private async Task<IList<TDocument>> Query(int? entityId = null, IDbTransaction tx = null)
     {
-        string entityName = GetCollectionName(typeof(TDocument));
-        string spName = "usp_" + entityName + "_Select";
+        string schema = GetSchema(typeof(TDocument));
+        string entityName = GetTableName(typeof(TDocument));
+        string spName = schema + "usp_" + entityName + "_Select";
         string parKeyName = "@" + entityName + "Id";
 
         var command = CreateCommand(spName, tx);
@@ -43,8 +44,9 @@ public class CrudRepository<TDocument> : BaseRepository, ICrudRepository<TDocume
 
     public async Task<TDocument> Insert(TDocument entity, IDbTransaction tx = null)
     {
-        string entityName = GetCollectionName(typeof(TDocument));
-        string spName = "usp_" + entityName + "_Insert";
+        string schema = GetSchema(typeof(TDocument));
+        string entityName = GetTableName(typeof(TDocument));
+        string spName = schema + "usp_" + entityName + "_Update";
 
         var command = CreateCommand(spName, tx);
         command.CommandType = CommandType.StoredProcedure;
@@ -64,8 +66,9 @@ public class CrudRepository<TDocument> : BaseRepository, ICrudRepository<TDocume
 
     public async Task<TDocument> Update(int id, TDocument entity, IDbTransaction tx = null)
     {
-        string entityName = GetCollectionName(typeof(TDocument));
-        string spName = "usp_" + entityName + "_Update";
+        string schema = GetSchema(typeof(TDocument));
+        string entityName = GetTableName(typeof(TDocument));
+        string spName = schema + "usp_" + entityName + "_Update";
         string propName = entityName + "Id";
 
         var command = CreateCommand(spName, tx);
@@ -91,8 +94,9 @@ public class CrudRepository<TDocument> : BaseRepository, ICrudRepository<TDocume
 
     public async Task<TDocument> Upsert(TDocument entity, IDbTransaction tx = null)
     {
-        string entityName = GetCollectionName(typeof(TDocument));
-        string spName = "usp_" + entityName + "_UI";
+        string schema = GetSchema(typeof(TDocument));
+        string entityName = GetTableName(typeof(TDocument));
+        string spName = schema + "usp_" + entityName + "_Update";
 
         var command = CreateCommand(spName, tx);
         command.CommandType = CommandType.StoredProcedure;
@@ -112,8 +116,9 @@ public class CrudRepository<TDocument> : BaseRepository, ICrudRepository<TDocume
 
     public async Task<int> Delete(int? entityId, IDbTransaction tx = null)
     {
-        string entityName = GetCollectionName(typeof(TDocument));
-        string spName = "usp_" + entityName + "_Delete";
+        string schema = GetSchema(typeof(TDocument));
+        string entityName = GetTableName(typeof(TDocument));
+        string spName = schema + "usp_" + entityName + "_Update";
         string parName = "@" + entityName + "Id";
 
         var command = CreateCommand(spName, tx);

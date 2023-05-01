@@ -66,9 +66,14 @@ public abstract class BaseRepository
         }
     }
 
-    protected string GetCollectionName(Type documentType)
+    protected string GetTableName(Type documentType)
     {
-        return ((BsonCollectionAttribute)documentType.GetCustomAttributes(typeof(BsonCollectionAttribute), true).FirstOrDefault()).CollectionName;
+        return ((BsonCollectionAttribute)documentType.GetCustomAttributes(typeof(BsonCollectionAttribute), true).FirstOrDefault()).TableName;
+    }
+
+    protected string GetSchema(Type documentType)
+    {
+        return ((BsonCollectionAttribute)documentType.GetCustomAttributes(typeof(BsonCollectionAttribute), true).FirstOrDefault()).Schema;
     }
 
     public async Task<IList<T>> QueryAsync<T>(string spName, object param = null, IDbTransaction tx = null) where T : new()

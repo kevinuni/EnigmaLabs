@@ -4,7 +4,8 @@ namespace Enigma.Domain.Base;
 
 public interface ICrudRepository<TDocument>
 {
-    Task<IEnumerable<TDocument>> Select(IDbTransaction tx = null);
+    Task<IList<TDocument>> Select(IDbTransaction tx = null);
+
     Task<TDocument> Select(int entityId, IDbTransaction tx = null);
 
     Task<TDocument> Insert(TDocument person, IDbTransaction tx = null);

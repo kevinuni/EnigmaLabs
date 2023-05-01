@@ -3,10 +3,12 @@
 [AttributeUsage(AttributeTargets.Class, Inherited = false)]
 public class BsonCollectionAttribute : Attribute
 {
-    public string CollectionName { get; }
+    public string TableName { get; }
+    public string Schema { get; set; }
 
-    public BsonCollectionAttribute(string collectionName)
+    public BsonCollectionAttribute(string tableName, string schema)
     {
-        CollectionName = collectionName;
+        TableName = tableName;
+        Schema = schema;
     }
 }
